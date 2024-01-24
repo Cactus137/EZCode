@@ -1,3 +1,13 @@
+<style>
+    .course_text {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        /* number of lines to show */
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+</style>
 <!-- Header Start -->
 <div class="container-fluid bg-primary py-5 mb-5 page-header">
     <div class="container py-5">
@@ -9,7 +19,7 @@
                         <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
                         <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
                         <li class="breadcrumb-item text-white active" aria-current="page">Courses</li>
-                    </ol>
+                    </ol> 
                 </nav>
             </div>
         </div>
@@ -60,25 +70,33 @@
         </form>
         <!-- Course Search -->
         <div class="row row-cols-1 row-cols-md-4 g-4 mb-4">
-            <?php for ($i = 0; $i < 12; $i++) : ?>
+            <?php
+            $courses = $data['courses'];
+            foreach ($courses as $course) :
+                extract($course);
+            ?>
                 <div class="col">
-                    <div class="card">
-                        <img src="img/course-1.jpg" class="card-img-top" alt="...">
+                    <div class="card h-100">
+                        <a href="/course/<?= $id ?>" class="text-decoration-none">
+                            <img src="<?= asset('img/courses/' . $thumbnail) ?>" class="card-img-top" style="min-height: 170px;">
+                        </a>
                         <div class="card-body">
                             <div class="course_header d-flex flex-row align-items-center justify-content-start">
                                 <a href="payment.php" class="btn btn-primary me-3">Join now</a>
-                                <div class="course_price ml-auto">Price: <span class="price_after me-2 text-success fs-5">$35</span><span class="price_before text-secondary fs-6 text-decoration-line-through">$35</span></div>
+                                <div class="course_price ml-auto fs-5">Price: <span class="price_after me-2 text-success fs-6">$<?= number_format($price) ?></span></div>
                             </div>
                             <div class="course_title mt-3">
-                                <a href="detailCourse.php" class="text-decoration-none">
-                                    <h5 class="card-title my-0">Online Literature Course</h5>
+                                <a href="/course/<?= $id ?>" class="text-decoration-none">
+                                    <h5 class="card-title my-0 fs-5"><?= $name; ?></h5>
                                 </a>
-                                <p class="course_author_name m-0 text-secondary fs-6">James S. Morrison</p>
+                                <p class="course_author_name m-0 text-secondary fs-6"><?= $author ?></p>
                             </div>
-                            <div class="course_text">Maecenas rutrum viverra sapien sed ferm entum. Morbi tempor odio eget lacus tempus pulvinar.</div>
+                            <div class="course_text">
+                                <?= $title ?>
+                            </div>
                             <div class="course_footer align-items-center justify-content-start mt-3">
                                 <div class="rating d-flex">
-                                    <p class="percent my-0 me-2 p-0">4.8</p>
+                                    <p class="percent my-0 me-2 p-0"><?= $rating ?></p>
                                     <?php
                                     for ($j = 0; $j < 5; $j++) :
                                     ?>
@@ -86,13 +104,13 @@
                                             <path fill="#FFD43B" d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                                         </svg>
                                     <?php endfor; ?>
-                                    <p class="number-rating my-0 ms-2 p-0">(345)</p>
+                                    <p class="number-rating my-0 ms-2 p-0">(<?= $number_of_participants ?>)</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            <?php endfor; ?>
+            <?php endforeach; ?>
         </div>
         <!-- Pagination -->
         <nav aria-label="Page navigation example" class="d-flex justify-content-end">

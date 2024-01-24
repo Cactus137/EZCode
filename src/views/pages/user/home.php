@@ -2,7 +2,7 @@
 <div class="container-fluid p-0 mb-5">
     <div class="owl-carousel header-carousel position-relative">
         <div class="owl-carousel-item position-relative">
-            <img class="img-fluid" src="img/carousel-1.jpg" alt="">
+            <img class="img-fluid" src="<?= asset('img/user/carousel-1.jpg')?>" alt="">
             <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
                 <div class="container">
                     <div class="row justify-content-start">
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="owl-carousel-item position-relative">
-            <img class="img-fluid" src="img/carousel-2.jpg" alt="">
+            <img class="img-fluid" src="<?= asset('img/user/carousel-2.jpg')?>" alt="">
             <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
                 <div class="container">
                     <div class="row justify-content-start">
@@ -35,9 +35,7 @@
         </div>
     </div>
 </div>
-<!-- Carousel End -->
-
-
+<!-- Carousel End --> 
 <!-- Service Start -->
 <div class="container-xxl py-5">
     <div class="container">
@@ -90,7 +88,7 @@
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                 <div class="position-relative h-100">
-                    <img class="img-fluid position-absolute w-100 h-100" src="img/about.jpg" alt="" style="object-fit: cover;">
+                    <img class="img-fluid position-absolute w-100 h-100" src="<?= asset('img/user/about.jpg')?>" alt="" style="object-fit: cover;">
                 </div>
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
@@ -134,17 +132,21 @@
             <h1 class="mb-5">Courses Categories</h1>
         </div>
 
-        <div class="row row-cols-1 row-cols-md-4 g-4">
-            <?php for ($i = 0; $i < 6; $i++) : ?>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <?php 
+                $categories = $data['categories'];
+                foreach ($categories as $category) :
+                    extract($category);
+            ?>
                 <a href="#" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
-                    <div class="col mx-2">
+                    <div class="col mx-2"> 
                         <div class="card h-100" style="border: none">
-                            <img src="img/cat-1.jpg" class="card-img-top rounded" height="170px">
-                            <h4 class="card-title py-3 text-dark fs-5">Programing</h4>
+                            <img src="<?= asset('img/categories/' . $thumbnail)?>" class="card-img-top rounded" height="170px">
+                            <h4 class="card-title py-3 text-dark fs-5"><?= $name?></h4>
                         </div>
                     </div>
                 </a>
-            <?php endfor; ?>
+            <?php endforeach; ?>
         </div>
     </div>
 </div>
@@ -161,7 +163,7 @@
             <?php for ($i = 0; $i < 6; $i++) : ?>
                 <div class="col">
                     <div class="card">
-                        <img src="img/course-1.jpg" class="card-img-top" alt="...">
+                        <img src="<?= asset('img/user/course-1.jpg')?>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="course_header d-flex flex-row align-items-center justify-content-start">
                                 <a href="payment.php" class="btn btn-primary me-3">Join now</a>

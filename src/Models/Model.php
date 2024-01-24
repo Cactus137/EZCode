@@ -27,11 +27,11 @@ class Model
         $sql = "SELECT * FROM $this->table WHERE ";
 
         foreach ($data as $key => $value) {
-            $sql .= "$key = '$value' AND ";
+            $sql .= "$key= $value AND ";
         }
 
-        $sql = substr($sql, 0, -4);
-
+        $sql = substr($sql, 0, -4); 
+        
         return $this->connection->query($sql);
     }
 
@@ -80,5 +80,5 @@ class Model
         }
 
         return $errors;
-    }
+    } 
 }

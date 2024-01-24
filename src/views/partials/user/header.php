@@ -6,10 +6,9 @@
 </div>
 <!-- Spinner End -->
 
-
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-    <a href="index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+    <a href="/" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
         <h2 class="m-0 text-primary">
             <img src="<?= asset('img/user/Logo.png')?>" width="50px" class="mb-2">
             </i>EZCode
@@ -20,12 +19,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="/home" class="nav-item nav-link active">Home</a>
+            <a href="/" class="nav-item nav-link active">Home</a>
             <a href="/about" class="nav-item nav-link">About</a>
             <a href="/course" class="nav-item nav-link">Courses</a>
             <a href="/blog" class="nav-item nav-link">Blog</a>
             <a href="/contact" class="nav-item nav-link">Contact</a>
-            <a href="/myCourses" class="nav-item nav-link">My courses</a>
+            <a href="/my-course" class="nav-item nav-link">My courses</a>
             <div class="nav-item d-flex align-items-center text-decoration-none me-3">
                 <button id="modalLogin" type="button" class="btn btn-secondary rounded-pill px-4 text-light" data-bs-toggle="modal" data-bs-target="#loginModal">Log in</button>
             </div>
