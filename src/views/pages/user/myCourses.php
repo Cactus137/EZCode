@@ -12,7 +12,7 @@
              <h1 class="mb-5">My course</h1>
          </div>
          <div class="row row-cols-1 row-cols-md-3 g-4 mb-4 wow fadeInUp" data-wow-delay="0.1s">
-             <?php
+             <?php 
                 foreach ($data['courses'] as $course) :
                     extract($course);
                 ?>

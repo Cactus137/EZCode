@@ -1,4 +1,56 @@
-<div class="page-wrapper">
+<style>
+  .alert {
+    position: relative;
+    animation: myfirst 1.5s forwards;
+  }
+
+  @keyframes myfirst {
+    0% {
+      right: -300px;
+    }
+
+    100% {
+      right: 0px;
+    }
+  }
+</style>
+<div class="page-wrapper position-relative">
+  <?php  
+  if (isset($_SESSION['notify'])) {
+    if ($_SESSION['notify'] == '0') {
+      echo '<div class="position-absolute end-0 mt-5" style="z-index: 100;">
+                <div class="alert alert-success alert-dismissible" role="alert" style="width: 300px;">
+                  <div class="d-flex">
+                    <div>
+                      Add category successfully!
+                    </div>
+                  </div>
+                  <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
+                </div>
+              </div>';
+    } else {
+      echo '<div class="position-absolute end-0 mt-5" style="z-index: 100;">
+                <div class="alert alert-danger alert-dismissible" role="alert" style="width: 300px;">
+                  <div class="d-flex">
+                    <div>
+                      Add category failed!
+                    </div>
+                  </div>
+                  <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
+                </div>
+              </div>';
+    }
+    echo '<script>
+              const alert = document.querySelectorAll(\'.alert\');
+              alert.forEach((item) => {
+                setTimeout(function() {
+                  item.remove();
+                }, 7000);
+              })
+            </script>';
+    unset($_SESSION['notify']);
+  }
+  ?>
   <!-- Page header -->
   <div class="page-header d-print-none">
     <div class="container-xl">
@@ -22,7 +74,6 @@
       </div>
     </div>
   </div>
-
   <!-- Page body -->
   <div class="page-body">
     <div class="container-xl">
@@ -41,21 +92,22 @@
                 </tr>
               </thead>
               <tbody class="table-tbody">
-                <?php for ($i = 0; $i < 10; $i++) : ?>
+                <?php
+                foreach ($data['categories'] as $category) :
+                  extract($category)
+                ?>
                   <tr>
-                    <td class="sort-id"><?= chr(rand(65, 90)); ?></td>
+                    <td class="sort-id"><?= $id; ?></td>
                     <td class="">
-                      <span class="avatar me-2" style="background-image: url(<?= asset('img/accounts/000f.jpg')?>)"></span>
+                      <span class="avatar me-2" style="background-image: url('<?= asset('img/categories/' . $thumbnail) ?>')"></span>
                     </td>
-                    <td class="sort-name"><?= chr(rand(65, 90)); ?></td>
-                    <td class="sort-date" data-date="<?= mt_rand() ?>"><?= mt_rand() ?></td>
-                    <td class="sort-status text-center" data-status="<?php $status = rand(1, 2);
-                                                                      echo $status ?>">
+                    <td class="sort-name"><?= $name; ?></td>
+                    <td class="sort-date" data-date="<?= strtotime($created_at) ?>"><?= $created_at ?></td>
+                    <td class="sort-status text-center" data-status="<?php $status; ?>">
                       <div class="col-auto"><span class="badge bg-<?= $status == 1 ? "red" : "green"; ?> me-2"></span><?= $status == 1 ? "Hidden" : "Public"; ?></div>
-
                     </td>
                     <td>
-                      <div class="btn-list flex-nowrap d-flex justify-content-center"> 
+                      <div class="btn-list flex-nowrap d-flex justify-content-center">
                         <div class="col-6 col-sm-4 col-md-2 col-xl-auto py-3">
                           <a href="#" class="btn btn-twitter w-100 btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report1">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -81,7 +133,7 @@
                       </div>
                     </td>
                   </tr>
-                <?php endfor; ?>
+                <?php endforeach; ?>
               </tbody>
             </table>
           </div>
@@ -125,46 +177,39 @@
           <h5 class="modal-title">Add category</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label class="form-label">Name</label>
-            <input type="text" class="form-control" name="example-text-input" placeholder="Your report name">
-          </div>
-          <div class="mb-3">
-            <div class="form-label">Thumbnail</div>
-            <input type="file" class="form-control" />
-          </div>
-          <div class="mb-3">
-            <div class="form-label">Status</div>
-            <div>
-              <label class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="radios-inline" checked>
-                <span class="form-check-label">Public</span>
-              </label>
-              <label class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="radios-inline">
-                <span class="form-check-label">Hidden</span>
-              </label>
+        <form action="/admin/category/add-category" method="post" enctype="multipart/form-data">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-control" name="name-add" placeholder="Your report name">
+            </div>
+            <div class="mb-3">
+              <div class="form-label">Thumbnail</div>
+              <input type="file" name="thumbnail-add" class="form-control" />
+            </div>
+            <div class="mb-3">
+              <div class="form-label">Status</div>
+              <div>
+                <label class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="status-add" value="0" checked>
+                  <span class="form-check-label">Public</span>
+                </label>
+                <label class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="status-add" value="1">
+                  <span class="form-check-label">Hidden</span>
+                </label>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
-            Cancel
-          </a>
-          <a href="#" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
-            <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M12 5l0 14" />
-              <path d="M5 12l14 0" />
-            </svg>
-            Add category
-          </a>
-        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" name="btn-add-category" class="btn btn-primary">Add category</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
+
   <div class="modal modal-blur fade" id="modal-report1" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -263,4 +308,4 @@
         ]
       });
     })
-  </script>
+  </script> 

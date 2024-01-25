@@ -18,7 +18,7 @@
         bottom: 0;
         background-color: #f0f0f0;
         z-index: 100;
-    } 
+    }
 </style>
 
 <?php
@@ -53,7 +53,7 @@ $current_lession = $data['current_lesson'];
             </div>
         </div>
         <div class="content-extra col-md-3 p-0 m-0 position-fixed end-0" style="overflow-y: auto; max-height: 100vh;" id="contentExtra">
-            <div class="top border-bottom d-flex align-items-center justify-content-between sticky-top" style="background-color: #e2e2e2">
+            <div class="top border-bottom d-flex align-items-center justify-content-between fixed-top-container" style="background-color: #e2e2e2">
                 <p class="py-3 m-0 ms-3">Course Content</p>
                 <i id="closeNavMenu" class="fa-solid fa-xmark pe-2" style="cursor: pointer;"></i>
             </div>

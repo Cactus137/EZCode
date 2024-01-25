@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 use App\Routes\Admin;
 use App\Routes\Api;

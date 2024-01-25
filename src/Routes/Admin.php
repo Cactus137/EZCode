@@ -29,6 +29,12 @@ class Admin
         Router::get('/admin/course', function () {
             $courses = new CoursesController();
             $courses->index();
+        }); 
+
+        // Create new category
+        Router::post('/admin/category/add-category', function () {
+            $category = new CategoryController();
+            $category->add();
         });
 
         Router::get('/admin/invoice', function () {

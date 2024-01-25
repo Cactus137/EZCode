@@ -12,13 +12,6 @@ class Controller
         http_response_code($code);
 
         echo json_encode($data);
-    }
-
-    public function vd($data)
-    {
-        echo "<pre>";
-        var_dump($data);
-        echo "</pre>";
-    }
+    } 
  
 }
