@@ -10,8 +10,14 @@ class CategoryController extends Controller
 {
     public function index()
     {
+        
+        $data = [
+            'title' => 'Category',
+        ];
+
         view('admin', [
-            'content' => PageLayout::admin('categories')
+            'content' => PageLayout::admin('categories'),
+            'data' => $data,
         ]);
     } 
 }

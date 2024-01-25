@@ -10,8 +10,13 @@ class CoursesController extends Controller
 {
     public function index()
     {
+        $data = [
+            'title' => 'Course',
+        ];
+        
         view('admin', [
-            'content' => PageLayout::admin('courses')
+            'content' => PageLayout::admin('courses'),
+            'data' => $data,
         ]);
     } 
 }

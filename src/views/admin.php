@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="shortcut icon" href="./src/views/static/logo-small.svg" type="image/x-icon">
-    <title><?= $data['title'] ?></title>
+    <title><?= "Admin | " . $data['title'] ?></title>
     <!-- CSS files -->
     <link href="<?= asset('css/admin/tabler.css') ?>" rel="stylesheet" />
     <link href="<?= asset('css/admin/tabler-flags.css') ?>" rel="stylesheet" />

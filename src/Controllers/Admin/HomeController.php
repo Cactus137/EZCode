@@ -9,8 +9,14 @@ class HomeController extends Controller
 {
     public function index()
     {
+
+        $data = [
+            'title' => "Dashboard",
+        ];
+
         view('admin', [
-            'content' => PageLayout::admin('home')
+            'content' => PageLayout::admin('home'),
+            'data' => $data,
         ]);
-    } 
+    }
 }

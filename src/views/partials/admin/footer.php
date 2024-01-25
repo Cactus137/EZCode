@@ -3,17 +3,19 @@
         <div class="row text-center align-items-center flex-row-reverse">
             <div class="col-lg-auto ms-lg-auto">
                 <ul class="list-inline list-inline-dots mb-0">
-                    <li class="list-inline-item"><a href="https://tabler.io/docs" target="_blank" class="link-secondary" rel="noopener">Documentation</a></li>
-                    <li class="list-inline-item"><a href="./license.html" class="link-secondary">License</a></li>
-                    <li class="list-inline-item"><a href="https://github.com/tabler/tabler" target="_blank" class="link-secondary" rel="noopener">Source code</a></li>
+                    <li class="list-inline-item"><a href="https://tabler.io/docs" target="_blank" class="link-secondary disabled" rel="noopener">Documentation</a></li>
+                    <li class="list-inline-item"><a href="./license.html" class="link-secondary disabled">License</a></li>
+                    <li class="list-inline-item"><a href="https://github.com/Cactus137/EZCode" target="_blank" class="link-secondary" rel="noopener">Source code</a></li>
                     <li class="list-inline-item">
-                        <a href="https://github.com/sponsors/codecalm" target="_blank" class="link-secondary" rel="noopener">
-                            <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon text-pink icon-filled icon-inline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <a href="https://github.com/sponsors/codecalm" target="_blank" class="link-secondary disabled" rel="noopener">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler-cactus text-success icon-filled icon-inline" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                                <path d="M6 9v1a3 3 0 0 0 3 3h1" />
+                                <path d="M18 8v5a3 3 0 0 1 -3 3h-1" />
+                                <path d="M10 21v-16a2 2 0 1 1 4 0v16" />
+                                <path d="M7 21h10" />
                             </svg>
-                            Sponsor
+                            Cactus
                         </a>
                     </li>
                 </ul>
@@ -21,13 +23,13 @@
             <div class="col-12 col-lg-auto mt-3 mt-lg-0">
                 <ul class="list-inline list-inline-dots mb-0">
                     <li class="list-inline-item">
-                        Copyright &copy; 2023
-                        <a href="." class="link-secondary">Tabler</a>.
+                        Copyright &copy; 2024
+                        <a href="." class="link-secondary">EZCode</a>.
                         All rights reserved.
                     </li>
                     <li class="list-inline-item">
                         <a href="./changelog.html" class="link-secondary" rel="noopener">
-                            v1.0.0-beta20
+                            FPT Polytechnic Ha Noi
                         </a>
                     </li>
                 </ul>
