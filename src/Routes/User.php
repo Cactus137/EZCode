@@ -32,21 +32,22 @@ class User
             $course = new CourseController();
             $course->myCourse();
         });
-        
-        Router::get('/about', function () {
-            $home = new HomeController();
-            $home->about();
+
+        Router::get('/course/category/{id}', function ($id) {
+            $course = new CourseController();
+            $course->category($id);
         });
 
-        // Router::get('/checkout/{id}', function ($id) {
-        //     $course = new PaymentController();
-        //     $course->checkout($id);
-        // });
 
-        // Router::get('/invoice/{transactionId}', function ($transactionId) {
-        //     $invoice = new PaymentController();
-        //     $invoice->showInvoce($transactionId);
-        // });
+        Router::get('/checkout/{id}', function ($id) {
+            $course = new PaymentController();
+            $course->checkout($id);
+        });
+
+        Router::get('/invoice/{transactionId}', function ($transactionId) {
+            $invoice = new PaymentController();
+            $invoice->showInvoce($transactionId);
+        });
 
         // Router::get('/enrollment', function () {
         //     $enrollment = new EnrollmentController();
@@ -71,5 +72,19 @@ class User
         //     $post->show($id);
         // });
 
+        Router::get('/about', function () {
+            $home = new HomeController();
+            $home->about();
+        });
+
+        Router::get('/contact', function () {
+            $home = new HomeController();
+            $home->contact();
+        });
+
+        Router::get('/blog', function () {
+            $home = new HomeController();
+            $home->blog();
+        });
     }
 }

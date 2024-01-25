@@ -27,7 +27,7 @@
 </head>
 
 <body>
-    <link href="<?= asset('js/demo-theme.js') ?>" rel="stylesheet" />
+    <script src="<?= asset('js/demo-theme.js') ?>"></script>
     <header>
         <?php include "partials/admin/header.php" ?>
     </header>

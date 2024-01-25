@@ -432,3 +432,8 @@
     padding-right: 0;
     border-right: none;
 }
+
+#disabled {
+    pointer-events: none;
+    cursor: default;
+}

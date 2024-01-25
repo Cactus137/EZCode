@@ -18,12 +18,7 @@
         bottom: 0;
         background-color: #f0f0f0;
         z-index: 100;
-    }
-
-    #disabled {
-        pointer-events: none;
-        cursor: default;
-    }
+    } 
 </style>
 
 <?php

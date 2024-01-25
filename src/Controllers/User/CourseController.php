@@ -8,6 +8,7 @@ use App\Models\Comment;
 use App\Models\Account;
 use App\Models\Invoice;
 use App\Models\Lesson;
+use App\Models\Category;
 use App\Models\PageLayout;
 
 class CourseController extends Controller
@@ -19,15 +20,19 @@ class CourseController extends Controller
         $courses = $course->find([
             'status' => 1
         ]);
-        // Add number of participants to course
+        $categories = [];
         foreach ($courses as $key => $value) {
             $number_of_participants = $rating->find(['id_course' => $value['id'], 'status' => 1]);
             $courses[$key]['number_of_participants'] = count($number_of_participants);
+            $cat = new Category();
+            $category = $cat->find(['id' => $value['id_category']]);
+            $categories = array_merge($categories, $category);           
         }
 
         $data = [
             'title' => 'Course',
             'courses' => $courses,
+            'categories' => $categories,
         ];
 
         view('user', [
@@ -41,6 +46,7 @@ class CourseController extends Controller
         $course = new Course();
         $comment = new Comment();
         $account = new Account();
+
         $courses = $course->find([
             'id' => $id,
         ]);
@@ -67,7 +73,7 @@ class CourseController extends Controller
             'title' => 'detailCourse',
             'courses' => $courses,
             'comments' => $comments,
-            'related_courses' => $related_courses
+            'related_courses' => $related_courses,
         ];
 
         view('user', [
@@ -125,6 +131,24 @@ class CourseController extends Controller
 
         view('user', [
             'content' => PageLayout::user('myCourses'),
+            'data' => $data
+        ]);
+    }
+
+    public function category($id) {
+        $course = new Course();
+        $courses = $course->find([
+            'id_category' => $id,
+            'status' => 1
+        ]);
+
+        $data = [
+            'title' => 'Category',
+            'courses' => $courses
+        ];
+
+        view('user', [
+            'content' => PageLayout::user('course'),
             'data' => $data
         ]);
     }

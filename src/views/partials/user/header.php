@@ -33,13 +33,13 @@
             </div>
             <div class="btn-group me-5">
                 <a class="d-flex align-items-center" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                    <img src="<?= asset('img/user/accounts/profile.jpg')?>" class="rounded-circle" width="35px">
+                    <i class="fa-solid fa-user" style="color: rgba(0,0,0,.55)"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg-end">
                     <li>
                         <div class="profile ms-3 d-flex mb-3 border-bottom" style="min-width: 200px;">
                             <div class="p-0 d-flex align-items-center">
-                                <img src="<?= asset('img/user/accounts/profile.jpg')?>" class="mb-3 rounded-circle me-3" width="45px">
+                                <img src="<?= asset('img/accounts/profile.jpg')?>" class="mb-3 rounded-circle me-3" width="45px">
                             </div>
                             <div class="ms-2">
                                 <div class="row">Le Van Thanh</div>

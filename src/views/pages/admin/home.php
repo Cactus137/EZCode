@@ -610,73 +610,73 @@
 
   <script src="<?= asset('js/tabler.js') ?>" defer></script>
   <script src="<?= asset('js/demo.js') ?>" defer></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      window.ApexCharts && (new ApexCharts(document.getElementById('chart-tasks-overview'), {
-        chart: {
-          type: "bar",
-          fontFamily: 'inherit',
-          height: 320,
-          parentHeightOffset: 0,
-          toolbar: {
-            show: false,
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        window.ApexCharts && (new ApexCharts(document.getElementById('chart-tasks-overview'), {
+          chart: {
+            type: "bar",
+            fontFamily: 'inherit',
+            height: 320,
+            parentHeightOffset: 0,
+            toolbar: {
+              show: false,
+            },
+            animations: {
+              enabled: false
+            },
           },
-          animations: {
-            enabled: false
+          plotOptions: {
+            bar: {
+              columnWidth: '50%',
+            }
           },
-        },
-        plotOptions: {
-          bar: {
-            columnWidth: '50%',
-          }
-        },
-        dataLabels: {
-          enabled: false,
-        },
-        fill: {
-          opacity: 1,
-        },
-        series: [{
-          name: "A",
-          data: [44, 32, 48, 72, 60, 16, 44, 32, 78, 50, 68, 34, 26, 48, 72, 60, 84, 64, 74, 52, 62, 50, 32, 22]
-        }],
-        tooltip: {
-          theme: 'dark'
-        },
-        grid: {
-          padding: {
-            top: -20,
-            right: 0,
-            left: -4,
-            bottom: -4
+          dataLabels: {
+            enabled: false,
           },
-          strokeDashArray: 4,
-        },
-        xaxis: {
-          labels: {
-            padding: 0,
+          fill: {
+            opacity: 1,
           },
+          series: [{
+            name: "A",
+            data: [44, 32, 48, 72, 60, 16, 44, 32, 78, 50, 68, 34, 26, 48, 72, 60, 84, 64, 74, 52, 62, 50, 32, 22]
+          }],
           tooltip: {
-            enabled: false
+            theme: 'dark'
           },
-          axisBorder: {
+          grid: {
+            padding: {
+              top: -20,
+              right: 0,
+              left: -4,
+              bottom: -4
+            },
+            strokeDashArray: 4,
+          },
+          xaxis: {
+            labels: {
+              padding: 0,
+            },
+            tooltip: {
+              enabled: false
+            },
+            axisBorder: {
+              show: false,
+            },
+            categories: ['Sprint 1', 'Sprint 2', 'Sprint 3', 'Sprint 4', 'Sprint 5', 'Sprint 6', 'Sprint 7', 'Sprint 8', 'Sprint 9', 'Sprint 10', 'Sprint 11', 'Sprint 12', 'Sprint 13', 'Sprint 14', 'Sprint 15', 'Sprint 16', 'Sprint 17', 'Sprint 18', 'Sprint 19', 'Sprint 20', 'Sprint 21', 'Sprint 22', 'Sprint 23', 'Sprint 24'],
+          },
+          yaxis: {
+            labels: {
+              padding: 4
+            },
+          },
+          colors: ['#21C4D1'],
+          legend: {
             show: false,
           },
-          categories: ['Sprint 1', 'Sprint 2', 'Sprint 3', 'Sprint 4', 'Sprint 5', 'Sprint 6', 'Sprint 7', 'Sprint 8', 'Sprint 9', 'Sprint 10', 'Sprint 11', 'Sprint 12', 'Sprint 13', 'Sprint 14', 'Sprint 15', 'Sprint 16', 'Sprint 17', 'Sprint 18', 'Sprint 19', 'Sprint 20', 'Sprint 21', 'Sprint 22', 'Sprint 23', 'Sprint 24'],
-        },
-        yaxis: {
-          labels: {
-            padding: 4
-          },
-        },
-        colors: [tabler.getColor("primary")],
-        legend: {
-          show: false,
-        },
-      })).render();
-    });
-    // @formatter:on
-  </script>
+        })).render();
+      });
+      // @formatter:on
+    </script>
   <script>
     // @formatter:off
     document.addEventListener("DOMContentLoaded", function() {
@@ -734,7 +734,7 @@
         labels: [
           '2020-06-20', '2020-06-21', '2020-06-22', '2020-06-23', '2020-06-24', '2020-06-25', '2020-06-26', '2020-06-27', '2020-06-28', '2020-06-29', '2020-06-30', '2020-07-01', '2020-07-02', '2020-07-03', '2020-07-04', '2020-07-05', '2020-07-06', '2020-07-07', '2020-07-08', '2020-07-09', '2020-07-10', '2020-07-11', '2020-07-12', '2020-07-13', '2020-07-14', '2020-07-15', '2020-07-16', '2020-07-17', '2020-07-18', '2020-07-19'
         ],
-        colors: [tabler.getColor("primary")],
+        colors: [tabler.getColor("secondary")],
         legend: {
           show: false,
         },

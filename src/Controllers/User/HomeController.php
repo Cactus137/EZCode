@@ -43,4 +43,27 @@ class HomeController extends Controller
         ]);
     }
 
+    public function contact()
+    {
+        $data = [
+            'title' => 'Contact',
+        ];
+
+        view('user', [
+            'content' => PageLayout::user('contact'),
+            'data' => $data
+        ]);
+    }
+
+    public function blog()
+    {
+        $data = [
+            'title' => 'Blog',
+        ];
+
+        view('user', [
+            'content' => PageLayout::user('blog'),
+            'data' => $data
+        ]);
+    }
 }

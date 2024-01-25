@@ -18,7 +18,6 @@ class Model
     public function all()
     {
         $sql = "SELECT * FROM $this->table";
-
         return $this->connection->query($sql);
     }
 

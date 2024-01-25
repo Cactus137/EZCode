@@ -21,7 +21,7 @@ class PaymentController extends Controller
         // ];
 
         view('shared', [
-            'content' => PageLayout::shared('checkout'),
+            'content' => PageLayout::shared('payment'),
             // 'data' => $data
         ]);
     }

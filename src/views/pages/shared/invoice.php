@@ -5,7 +5,7 @@
             <div class="row g-2 align-items-center">
                 <div class="col">
                     <h2 class="page-title">
-                        Hoá đơn
+                        Invoice
                     </h2>
                 </div>
                 <!-- Page title actions -->
@@ -18,7 +18,7 @@
                             <path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4" />
                             <path d="M7 13m0 2a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2z" />
                         </svg>
-                        In
+                        Print
                     </button>
                 </div>
             </div>
@@ -31,35 +31,35 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6">
-                            <p class="h3">Q.Udemy</p>
+                            <p class="h3">EZCode</p>
                             <address>
                                 34 Trịnh Văn bô<br>
                                 Nam Từ Liêm, Hà Nội<br>
                                 Việt Nam<br>
-                                qudemy@gmail.com
+                                cactusezcode@gmail.com
                             </address>
                         </div>
                         <div class="col-6 text-end">
-                            <p class="h3">Đỗ Hồng Quân</p>
+                            <p class="h3">Le Van Thanh</p>
                             <address>
-                                Street Address<br>
-                                State, City<br>
-                                Region, Postal Code<br>
-                                ctr@example.com
+                                14 Me Tri Ha<br>
+                                Nam Tu Liem, Ha Noi<br>
+                                Viet Nam<br>
+                                blackwhilee04@gmail.com
                             </address>
                         </div>
                         <div class="col-12 my-5">
-                            <h1>Hoá đơn số INV/001/15</h1>
+                            <h1>Invoice No. INV/001/15</h1>
                         </div>
                     </div>
                     <table class="table table-transparent table-responsive">
                         <thead>
                             <tr>
                                 <th class="text-center" style="width: 1%"></th>
-                                <th>Khoá học</th>
-                                <th class="text-center" style="width: 1%">Số lượng</th>
-                                <th class="text-end" style="width: 1%">Đơn giá</th>
-                                <th class="text-end" style="width: 1%">Thành tiền</th>
+                                <th>COURSES</th>
+                                <th class="text-center" style="width: 1%">QUANTITY</th>
+                                <th class="text-end" style="width: 1%">UNIT PRICE</th>
+                                <th class="text-end" style="width: 1%">INTO MONEY</th>
                             </tr>
                         </thead>
                         <tr>
@@ -75,15 +75,15 @@
                             <td class="text-end">$1.800,00</td>
                         </tr>
                         <tr>
-                            <td colspan="4" class="strong text-end">Tổng cộng</td>
+                            <td colspan="4" class="strong text-end">Total</td>
                             <td class="text-end">$25.000,00</td>
                         </tr>
                         <tr>
-                            <td colspan="4" class="strong text-end">Hình thức thanh toán</td>
+                            <td colspan="4" class="strong text-end">Payments</td>
                             <td class="text-end">Online</td>
                         </tr>
                         <tr>
-                            <td colspan="4" class="strong text-end">Mã giao dịch</td>
+                            <td colspan="4" class="strong text-end">Trading code</td>
                             <td class="text-end">INV/001/15</td>
                         </tr>
                         <tr>
@@ -91,16 +91,16 @@
                             <td class="text-end">$0</td>
                         </tr>
                         <tr>
-                            <td colspan="4" class="font-weight-bold text-uppercase text-end">Tổng thanh toán</td>
+                            <td colspan="4" class="font-weight-bold text-uppercase text-end">TOTAL PAYMENT</td>
                             <td class="font-weight-bold text-end">$25.000,00</td>
                         </tr>
                     </table>
                     <div class="card-foot row" style="height: 200px;">
                         <div class="col-12">
-                            <span class="fw-bold m-5">Xác nhận</span>
+                            <span class="fw-bold m-5">Confirm</span>
                         </div>
                     </div>
-                    <p class="text-secondary text-center mt-5">Chúc mừng bạn đã thanh toán hoàn thành thanh toán Khoá học của chúng tôi. Chúc bạn học tập thật tốt!</p>
+                    <p class="text-secondary text-center mt-5">Congratulations on completing your payment for our Course. Wishing you good studying!</p>
                 </div>
             </div>
         </div>

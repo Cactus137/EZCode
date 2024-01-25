@@ -19,7 +19,7 @@
                         <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
                         <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
                         <li class="breadcrumb-item text-white active" aria-current="page">Courses</li>
-                    </ol> 
+                    </ol>
                 </nav>
             </div>
         </div>
@@ -41,7 +41,6 @@
                 </div>
             </div>
         </div>
-
         <form class="row w-100 my-5">
             <div class="col">
                 <input type="password" class="form-control" id="inputPassword2" placeholder="Course">
@@ -49,9 +48,12 @@
             <div class="col">
                 <select class="form-select">
                     <option selected>-- Category --</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <?php
+                    foreach ($data['categories'] as $key => $category) :
+                        extract($category);
+                    ?>
+                        <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
             <div class="col">
