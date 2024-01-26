@@ -18,11 +18,11 @@ class CourseController extends Controller
         $course = new Course();
         $rating = new Comment();
         $courses = $course->find([
-            'status' => 1
+            'status' => 0
         ]);
         $categories = [];
         foreach ($courses as $key => $value) {
-            $number_of_participants = $rating->find(['id_course' => $value['id'], 'status' => 1]);
+            $number_of_participants = $rating->find(['id_course' => $value['id'], 'status' => 0]);
             $courses[$key]['number_of_participants'] = count($number_of_participants);
             $cat = new Category();
             $category = $cat->find(['id' => $value['id_category']]);
@@ -53,12 +53,12 @@ class CourseController extends Controller
         // Related courses
         $related_courses = $course->find([
             'id_category' => $courses[0]['id_category'],
-            'status' => 1,
+            'status' => 0,
             'id !' => $id,
         ]);
         
         // Add number of participants to course
-        $comments = $comment->find(['id_course' => $id, 'status' => 1]);
+        $comments = $comment->find(['id_course' => $id, 'status' => 0]);
         $courses[0]['number_of_participants'] = count($comments);
         if (!empty($related_courses)) {
             $related_courses[0]['number_of_participants'] = count($comments);
@@ -139,7 +139,7 @@ class CourseController extends Controller
         $course = new Course();
         $courses = $course->find([
             'id_category' => $id,
-            'status' => 1
+            'status' => 0
         ]);
 
         $data = [
