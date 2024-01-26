@@ -5,7 +5,7 @@ namespace App\Controllers\Admin;
 use App\Controllers\Controller;
 use App\Models\PageLayout;
 
-class HomeController extends Controller
+class HomeControllerAdmin extends Controller
 {
     public function index()
     {

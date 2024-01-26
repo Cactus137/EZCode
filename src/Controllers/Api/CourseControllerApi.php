@@ -5,7 +5,7 @@ namespace App\Controllers\Api;
 use App\Controllers\Controller;
 use App\Models\Course;
 
-class CourseController extends Controller
+class CourseControllerApi extends Controller
 {
     public function index()
     {

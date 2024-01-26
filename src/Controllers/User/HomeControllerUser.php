@@ -7,7 +7,7 @@ use App\Models\Course;
 use App\Models\Category;
 use App\Models\PageLayout;
 
-class HomeController extends Controller
+class HomeControllerUser extends Controller
 {
     public function index()
     {
@@ -65,5 +65,5 @@ class HomeController extends Controller
             'content' => PageLayout::user('blog'),
             'data' => $data
         ]);
-    }
+    } 
 }
