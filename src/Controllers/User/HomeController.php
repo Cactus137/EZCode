@@ -16,7 +16,7 @@ class HomeController extends Controller
 
         $courses = $course->all();
         $categories = $category->find([
-            'status' => 1
+            'status' => 0
         ]);
 
         $data = [
