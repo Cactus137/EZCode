@@ -16,6 +16,8 @@ class CourseControllerApi extends Controller
 
     public function show($id)
     {
-        echo "Course $id";
+        $course = new Course;
+        $detailCourse = $course->find(['id_course' => $id]);
+        return $this->json($detailCourse, 200);
     }
 }
