@@ -156,7 +156,7 @@
             </div>
             <div class="nav-item dropdown">
               <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                <span class="avatar avatar-sm" style="background-image: url(#)"></span>
                 <div class="d-none d-xl-block ps-2">
                   <div>Paweł Kuna</div>
                   <div class="mt-1 small text-secondary">UI Designer</div>
@@ -649,7 +649,7 @@
                     <div class="nav flex-column nav-pills" role="tablist">
                       <a href="#chat-1" class="nav-link text-start mw-100 p-3 active" id="chat-1-tab" data-bs-toggle="pill" role="tab" aria-selected="true">
                         <div class="row align-items-center flex-fill">
-                          <div class="col-auto"><span class="avatar" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                          <div class="col-auto"><span class="avatar" style="background-image: url(#)"></span>
                           </div>
                           <div class="col text-body">
                             <div>Paweł Kuna</div>
@@ -770,7 +770,7 @@
                                 </div>
                               </div>
                             </div>
-                            <div class="col-auto"><span class="avatar" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                            <div class="col-auto"><span class="avatar" style="background-image: url(#)"></span>
                             </div>
                           </div>
                         </div>
@@ -846,7 +846,7 @@
                                 </div>
                               </div>
                             </div>
-                            <div class="col-auto"><span class="avatar" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                            <div class="col-auto"><span class="avatar" style="background-image: url(#)"></span>
                             </div>
                           </div>
                         </div>
@@ -906,7 +906,7 @@
                                 </div>
                               </div>
                             </div>
-                            <div class="col-auto"><span class="avatar" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                            <div class="col-auto"><span class="avatar" style="background-image: url(#)"></span>
                             </div>
                           </div>
                         </div>
@@ -944,7 +944,7 @@
                                 </div>
                               </div>
                             </div>
-                            <div class="col-auto"><span class="avatar" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                            <div class="col-auto"><span class="avatar" style="background-image: url(#)"></span>
                             </div>
                           </div>
                         </div>
@@ -982,13 +982,13 @@
                                 </div>
                               </div>
                             </div>
-                            <div class="col-auto"><span class="avatar" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                            <div class="col-auto"><span class="avatar" style="background-image: url(#)"></span>
                             </div>
                           </div>
                         </div>
                         <div class="chat-item">
                           <div class="row align-items-end">
-                            <div class="col-auto"><span class="avatar" style="background-image: url(./static/avatars/000f.jpg)"></span>
+                            <div class="col-auto"><span class="avatar" style="background-image: url(#)"></span>
                             </div>
                             <div class="col-auto">
                               <div class="chat-bubble">

@@ -15481,7 +15481,7 @@ body[data-bs-theme=dark] .navbar[data-bs-theme=light] {
          columns: 4 !important;
   }
 }
-@media print {
+@media print {  
   .d-print-inline {
     display: inline !important;
   }
@@ -15927,7 +15927,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-@media print {
+
+
+@media print { 
   body {
     background: transparent;
   }
@@ -16211,7 +16213,7 @@ Navbar
     left: 0;
     right: 0;
     bottom: -0.25rem;
-    border: 0 var(--tblr-border-style) var(--tblr-navbar-active-border-color);
+    border: 0 var(--tblr-border-style) #21C4D1;
     border-bottom-width: 2px;
   }
   .navbar-expand-md.navbar-vertical {
@@ -17414,7 +17416,8 @@ Navbar vertical
   display: flex;
   flex-direction: column;
 }
-@media print {
+@media print { 
+  
   .page-wrapper {
     margin: 0 !important;
   }
@@ -20206,7 +20209,8 @@ a.badge {
     transition: none;
   }
 }
-@media print {
+@media print { 
+  
   .card {
     border: none;
     box-shadow: none;
@@ -20518,7 +20522,8 @@ a.card-title:hover {
     padding: 4rem;
   }
 }
-@media print {
+@media print { 
+  
   .card-body {
     padding: 0;
   }
@@ -23600,8 +23605,9 @@ a.step-item:hover {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   white-space: nowrap;
-}
+} 
 @media print {
+   
   .table thead th, .markdown > table thead th {
     background: transparent;
   }

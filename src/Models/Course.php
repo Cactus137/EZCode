@@ -11,6 +11,7 @@ class Course extends Model
     public array $fields = [ 
         'id',
         'name',
+        'title',
         'thumbnail',
         'price',
         'description',
@@ -18,7 +19,7 @@ class Course extends Model
         'status',
         'author',
         'created_at',
-        'id_category',
+        'id_category', 
     ];
 
     public function __construct()

@@ -10,8 +10,13 @@ class InvoiceController extends Controller
 {
     public function index()
     {
+        $data = [
+            'title' => 'Invoice',
+        ];
+
         view('admin', [
-            'content' => PageLayout::admin('invoice')
+            'content' => PageLayout::admin('invoice'),
+            'data' => $data,
         ]);
     } 
 }

@@ -59,12 +59,8 @@
                 <div>Conversion rate</div>
                 <div class="ms-auto">
                   <span class="text-green d-inline-flex align-items-center lh-1">
-                    7% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M3 17l6 -6l4 4l8 -8" />
-                      <path d="M14 7l7 0l0 7" />
-                    </svg>
+                    7%
+                    <i class="fa-solid fa-arrow-up ms-2"></i>
                   </span>
                 </div>
               </div>
@@ -96,12 +92,8 @@
                 <div class="h1 mb-0 me-2">$4,300</div>
                 <div class="me-auto">
                   <span class="text-green d-inline-flex align-items-center lh-1">
-                    8% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M3 17l6 -6l4 4l8 -8" />
-                      <path d="M14 7l7 0l0 7" />
-                    </svg>
+                    8%
+                    <i class="fa-solid fa-arrow-up ms-2"></i>
                   </span>
                 </div>
               </div>
@@ -129,11 +121,8 @@
                 <div class="h1 mb-3 me-2">6,782</div>
                 <div class="me-auto">
                   <span class="text-yellow d-inline-flex align-items-center lh-1">
-                    0% <!-- Download SVG icon from http://tabler-icons.io/i/minus -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M5 12l14 0" />
-                    </svg>
+                    0%
+                    <i class="fa-solid fa-minus ms-2"></i>
                   </span>
                 </div>
               </div>
@@ -161,12 +150,8 @@
                 <div class="h1 mb-3 me-2">2,986</div>
                 <div class="me-auto">
                   <span class="text-green d-inline-flex align-items-center lh-1">
-                    4% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M3 17l6 -6l4 4l8 -8" />
-                      <path d="M14 7l7 0l0 7" />
-                    </svg>
+                    4%
+                    <i class="fa-solid fa-arrow-up ms-2"></i>
                   </span>
                 </div>
               </div>
@@ -499,12 +484,8 @@
                   </div>
                   <div class="col">
                     <div>Today's Earning: $4,262.40</div>
-                    <div class="text-secondary"><!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
-                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-inline text-green" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M3 17l6 -6l4 4l8 -8" />
-                        <path d="M14 7l7 0l0 7" />
-                      </svg>
+                    <div class="text-secondary">
+                      <i class="fa-solid fa-arrow-up"></i>
                       +5% more than yesterday
                     </div>
                   </div>
@@ -524,7 +505,7 @@
                 <tbody>
                   <tr>
                     <td class="w-1">
-                      <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                      <span class="avatar avatar-sm" style="background-image: url(#)"></span>
                     </td>
                     <td class="td-truncate">
                       <div class="text-truncate">
@@ -586,7 +567,6 @@
           <div class="card card-md">
             <div class="card-stamp card-stamp-lg">
               <div class="card-stamp-icon bg-primary">
-                <!-- Download SVG icon from http://tabler-icons.io/i/ghost -->
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                   <path d="M5 11a7 7 0 0 1 14 0v7a1.78 1.78 0 0 1 -3.1 1.4a1.65 1.65 0 0 0 -2.6 0a1.65 1.65 0 0 1 -2.6 0a1.65 1.65 0 0 0 -2.6 0a1.78 1.78 0 0 1 -3.1 -1.4v-7" />
@@ -669,7 +649,7 @@
             padding: 4
           },
         },
-        colors: [tabler.getColor("primary")],
+        colors: ['#21C4D1'],
         legend: {
           show: false,
         },
@@ -734,7 +714,7 @@
         labels: [
           '2020-06-20', '2020-06-21', '2020-06-22', '2020-06-23', '2020-06-24', '2020-06-25', '2020-06-26', '2020-06-27', '2020-06-28', '2020-06-29', '2020-06-30', '2020-07-01', '2020-07-02', '2020-07-03', '2020-07-04', '2020-07-05', '2020-07-06', '2020-07-07', '2020-07-08', '2020-07-09', '2020-07-10', '2020-07-11', '2020-07-12', '2020-07-13', '2020-07-14', '2020-07-15', '2020-07-16', '2020-07-17', '2020-07-18', '2020-07-19'
         ],
-        colors: [tabler.getColor("primary")],
+        colors: [tabler.getColor("secondary")],
         legend: {
           show: false,
         },

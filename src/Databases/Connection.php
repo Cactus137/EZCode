@@ -17,7 +17,7 @@ class Connection
         $username = env('DB_USERNAME');
         $password = env('DB_PASSWORD');
         try {
-            $this->connection = new PDO("mysql:host=$host;dbname=$db_name;", $username, $password);
+            $this->connection = new PDO("mysql:host=$host;dbname=$db_name;charset=utf8", $username, $password);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             die("Connection failed: " . $e->getMessage());

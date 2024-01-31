@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>405</title>
     <!-- CSS files -->
-    <link href="./src/views/assets/css/tabler.css" rel="stylesheet" />
-    <link href="./src/views/assets/css/tabler-flags.css" rel="stylesheet" />
-    <link href="./src/views/assets/css/tabler-payments.css" rel="stylesheet" />
-    <link href="./src/views/assets/css/tabler-vendors.css" rel="stylesheet" />
-    <link href="./src/views/assets/css/demo.css" rel="stylesheet" />
+    <link href="<?= asset('css/admin/tabler.css') ?>" rel="stylesheet" />
+    <link href="<?= asset('css/admin/tabler-flags.css') ?>" rel="stylesheet" />
+    <link href="<?= asset('css/admin/tabler-payments.css') ?>" rel="stylesheet" />
+    <link href="<?= asset('css/admin/tabler-vendors.css') ?>" rel="stylesheet" />
+    <link href="<?= asset('css/admin/demo.css') ?>" rel="stylesheet" />
     <style>
         @import url('https://rsms.me/inter/inter.css');
 
@@ -26,7 +26,7 @@
 </head>
 
 <body class=" border-top-wide border-primary d-flex flex-column">
-    <script src="./src/views/assets/js/demo-theme.js"></script>
+    <link href="<?= asset('js/demo-theme.js') ?>" rel="stylesheet" />
     <div class="page page-center">
         <div class="container-tight py-4">
             <div class="empty">
@@ -37,7 +37,7 @@
                     Liên hệ với quản trị viên để được hỗ trợ.
                 </p>
                 <div class="empty-action">
-                    <a href="./." class="btn btn-primary">
+                    <a href="./" class="btn btn-primary">
                         <!-- Download SVG icon from http://tabler-icons.io/i/arrow-left -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -53,8 +53,8 @@
     </div>
     <!-- Libs JS -->
     <!-- Tabler Core -->
-    <script src="./src/views/assets/js/tabler.js" defer></script>
-    <script src="./src/views/assets/js/demo.js" defer></script>
+    <link href="<?= asset('js/tabler.js') ?>" rel="stylesheet" />
+    <link href="<?= asset('js/demo.js') ?>" rel="stylesheet" />
 </body>
 
 </html>

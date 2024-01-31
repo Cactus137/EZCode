@@ -156,7 +156,7 @@
             </div>
             <div class="nav-item dropdown">
               <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                <span class="avatar avatar-sm" style="background-image: url(#)"></span>
                 <div class="d-none d-xl-block ps-2">
                   <div>Paweł Kuna</div>
                   <div class="mt-1 small text-secondary">UI Designer</div>
@@ -730,7 +730,7 @@
                         <div class="text-secondary float-end">2 days ago</div>
                         <h4>+3 Friend Requests</h4>
                         <div class="avatar-list mt-3">
-                          <span class="avatar" style="background-image: url(./static/avatars/000m.jpg)">
+                          <span class="avatar" style="background-image: url(#)">
                             <span class="badge bg-success"></span></span>
                           <span class="avatar">
                             <span class="badge bg-success"></span>JL</span>

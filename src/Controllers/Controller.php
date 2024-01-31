@@ -11,6 +11,7 @@ class Controller
 
         http_response_code($code);
 
-        echo json_encode($data);
-    }
+        return json_encode($data);
+    } 
+ 
 }

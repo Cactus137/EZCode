@@ -1,4 +1,3 @@
-<div class="page">
     <div class="sticky-top">
         <header class="navbar navbar-expand-md sticky-top d-print-none">
             <div class="container-xl">
@@ -6,8 +5,8 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                    <a href="./admin">
-                        <img src="./src/views/static/logo.svg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+                    <a href="/admin">
+                        <img src="<?= asset('img/shared/logo-2.png')?>" class="navbar-brand-image">
                     </a>
                 </h1>
                 <div class="navbar-nav flex-row order-md-last">
@@ -127,7 +126,7 @@
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                            <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                            <span class="avatar avatar-sm" style="background-image: url(#)"></span>
                             <div class="d-none d-xl-block ps-2">
                                 <div>Paweł Kuna</div>
                                 <div class="mt-1 small text-secondary">UI Designer</div>
@@ -244,7 +243,7 @@
                                 </a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="chat.html">
+                                <a class="nav-link disabled" href="chat.html">
                                     <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -257,7 +256,7 @@
                                 </a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="./">
+                                <a class="nav-link disabled" href="./">
                                     <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-article" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
