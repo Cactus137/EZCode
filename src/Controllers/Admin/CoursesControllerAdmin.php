@@ -40,14 +40,14 @@ class CoursesControllerAdmin extends Controller
             $course = new Course();
 
             $checkValidate = true;
-            if (empty($name_add) || $name_add == '' || empty($author_add) || $author_add == '' || empty($title_add) || $title_add == '' || empty($description_add) || $description_add == '') {
+            if (empty($name_add) || empty($author_add) || empty($title_add) || empty($description_add)) {
                 $checkValidate = false;
             }
             if (empty($price_add) || is_numeric($price_add) == false) {
                 $checkValidate = false;
             }
             // Check category
-            if (empty($category_add) || $category_add == "#") {
+            if (empty($category_add) || $category_add == "-1") {
                 $checkValidate = false;
             }
 
@@ -65,7 +65,7 @@ class CoursesControllerAdmin extends Controller
                         $uploadOk = false;
                     }
                     if ($uploadOk) {
-                        move_uploaded_file($_FILES["thumbnail-add"]["tmp_name"], $target_dir . $_FILES['thumbnail-add']['name']);
+                        move_uploaded_file($_FILES["thumbnail-add"]["tmp_name"], $target_file);
 
                         $dataAdd = [
                             'name' => $name_add,
@@ -73,11 +73,11 @@ class CoursesControllerAdmin extends Controller
                             'author' => $author_add,
                             'title' => $title_add,
                             'description' => $description_add,
-                            'category_id' => $category_add,
+                            'id_category' => $category_add,
                             'thumbnail' => $_FILES['thumbnail-add']['name'],
                             'created_at' => date('Y-m-d'),
                             'status' => $status_add,
-                        ]; 
+                        ];
 
                         $course->create($dataAdd);
                         // Notion: [0: success, 1: fail]
@@ -95,7 +95,7 @@ class CoursesControllerAdmin extends Controller
                         'author' => $author_add,
                         'title' => $title_add,
                         'description' => $description_add,
-                        'category_id' => $category_add,
+                        'id_category' => $category_add,
                         'thumbnail' => 'df_course.png',
                         'created_at' => date('Y-m-d'),
                         'status' => $status_add,
@@ -114,87 +114,103 @@ class CoursesControllerAdmin extends Controller
         }
     }
 
-    // Update Category
-    // public function update()
-    // {
-    //     if (isset($_POST['btn-update-category'])) {
-    //         $id_update = $_POST['id-update'];
-    //         $name_update = $_POST['name-update'];
-    //         $status_update = $_POST['status-update'];
+    // Update Course
+    public function update()
+    {
+        if (isset($_POST['btn-update-course'])) {
+            $id_update = $_POST['id-update'];
+            $name_update = $_POST['name-update'];
+            $price_update = (int)$_POST['price-update'];
+            $author_update = $_POST['author-update'];
+            $title_update = $_POST['title-update'];
+            $description_update = $_POST['description-update'];
+            $category_update = $_POST['category-update'];
+            $status_update = $_POST['status-update'];
 
-    //         $category = new Category();
+            $course = new Course();
 
-    //         $checkValidate = true;
-    //         if (empty($name_update) || $name_update == '') {
-    //             $checkValidate = false;
-    //         } else {
-    //             $checkValidate = true;
-    //         }
+            $checkValidate = true;
+            if (empty($name_update) || empty($author_update) || empty($title_update) || empty($description_update)) {
+                $checkValidate = false;
+            }
+            if (empty($price_update) || is_numeric($price_update) == false) {
+                $checkValidate = false;
+            }
+            if (empty($category_update) || $category_update == "-1") {
+                $checkValidate = false;
+            }
+            if ($checkValidate == true) {
+                if ($_FILES['thumbnail-update']['name']) {
+                    $target_dir = 'http://localhost:8000/public/';
+                    $target_file = $target_dir . basename($_FILES["thumbnail-update"]["name"]);
+                    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+                    $uploadOk = true;
+                    // Check file size
+                    if (($_FILES["thumbnail-update"]["size"] > 500000)) {
+                        $uploadOk = false;
+                    }
+                    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+                        $uploadOk = false;
+                    }
+                    if ($uploadOk) {
+                        move_uploaded_file($_FILES["thumbnail-update"]["tmp_name"], $target_file);  
+                        var_dump(move_uploaded_file($_FILES["thumbnail-update"]["tmp_name"], $target_file));
+                        die;
+                        $dataUpdate = [
+                            'name' => $name_update,
+                            'price' => $price_update,
+                            'author' => $author_update,
+                            'title' => $title_update,
+                            'description' => $description_update,
+                            'id_category' => $category_update,
+                            'thumbnail' => $_FILES['thumbnail-update']['name'],
+                            'created_at' => date('Y-m-d'),
+                            'status' => $status_update,
+                        ];
 
-    //         if ($checkValidate == true) {
-    //             if ($_FILES['thumbnail-update']['name']) {
-    //                 $target_dir = asset('img/categories/');
-    //                 $target_file = $target_dir . basename($_FILES["thumbnail-update"]["name"]);
-    //                 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-    //                 $uploadOk = true;
-    //                 // Check file size
-    //                 if (($_FILES["thumbnail-update"]["size"] > 500000)) {
-    //                     $uploadOk = false;
-    //                 }
-    //                 if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
-    //                     $uploadOk = false;
-    //                 }
-    //                 if ($uploadOk) {
-    //                     move_uploaded_file($_FILES["thumbnail-update"]["tmp_name"], $target_file);
-    //                     $dataUpdate = [
-    //                         'name' => $name_update,
-    //                         'thumbnail' => $_FILES['thumbnail-update']['name'],
-    //                         'created_at' => date('Y-m-d'),
-    //                         'status' => $status_update,
-    //                     ];
+                        $course->update($dataUpdate, $id_update);
+                        // Notion: [0: success, 1: fail]
+                        $_SESSION['notify-course'] = [0, 'success', 'Update course successfully!'];
+                        header('Location: /admin/course');
+                    } else {
+                        // Notion: [0: success, 1: fail]
+                        $_SESSION['notify-course'] = [1, 'danger', 'Update course failed!'];
+                        header('Location: /admin/course');
+                    }
+                } else {
+                    $thumbnail_old = $course->find(['id' => $id_update])[0]['thumbnail'];
+                    $dataUpdate = [
+                        'name' => $name_update,
+                        'price' => $price_update,
+                        'author' => $author_update,
+                        'title' => $title_update,
+                        'description' => $description_update,
+                        'id_category' => $category_update,
+                        'thumbnail' => $thumbnail_old,
+                        'created_at' => date('Y-m-d'),
+                        'status' => $status_update,
+                    ];
 
-    //                     $category->update($dataUpdate, $id_update);
-    //                     // Notion: [0: success, 1: fail]
-    //                     $_SESSION['notify-course'] = [0, 'success', 'Update category successfully!'];
-    //                     header('Location: /admin/category');
-    //                 } else {
-    //                     // Notion: [0: success, 1: fail]
-    //                     $_SESSION['notify-course'] = [1, 'danger', 'Update category failed!'];
-    //                     header('Location: /admin/category');
-    //                 }
-    //             } else {
-    //                 $thumbnail_old = $category->find(['id' => $id_update])[0]['thumbnail'];
-    //                 $dataUpdate = [
-    //                     'name' => $name_update,
-    //                     'thumbnail' => $thumbnail_old,
-    //                     'created_at' => date('Y-m-d'),
-    //                     'status' => $status_update,
-    //                 ];
+                    $course->update($dataUpdate, $id_update);
+                    // Notion: [0: success, 1: fail]
+                    $_SESSION['notify-course'] = [0, 'success', 'Update course successfully!'];
+                    header('Location: /admin/course');
+                }
+            }
+        }
+    }
 
-    //                 $category->update($dataUpdate, $id_update);
-    //                 // Notion: [0: success, 1: fail]
-    //                 $_SESSION['notify-course'] = [0, 'success', 'Update category successfully!'];
-    //                 header('Location: /admin/category');
-    //             }
-    //         } else {
-    //             // Notion: [0: success, 1: fail]
-    //             $_SESSION['notify-course'] = [1, 'danger', 'Update category failed!'];
-    //             header('Location: /admin/category');
-    //         }
-    //     }
-    // }
+    // Delete Course
+    public function delete()
+    {
+        if (isset($_POST['btn-delete-course'])) {
+            $id_delete = $_POST['id-delete'];
+            $course = new Course();
 
-    // Delete Category
-    // public function delete()
-    // {
-    //     if (isset($_POST['btn-delete-category'])) {
-    //         $id_delete = $_POST['id-delete'];
-    //         $category = new Category();
-
-    //         $category->destroy($id_delete);
-    //         // Notion: [0: success, 1: fail]
-    //         $_SESSION['notify-course'] = [0, 'success', 'Delete category successfully!'];
-    //         header('Location: /admin/category');
-    //     }
-    // }
+            $course->destroy($id_delete);
+            // Notion: [0: success, 1: fail]
+            $_SESSION['notify-course'] = [0, 'success', 'Delete course successfully!'];
+            header('Location: /admin/course');
+        }
+    }
 }

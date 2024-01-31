@@ -1,3 +1,19 @@
+<style>
+  .alert {
+    position: relative;
+    animation: myfirst 0.8s forwards;
+  }
+
+  @keyframes myfirst {
+    0% {
+      right: -300px;
+    }
+
+    100% {
+      right: 0px;
+    }
+  }
+</style>
 <div class="page-wrapper">
   <?php
   if (isset($_SESSION['notify-course'])) {
@@ -86,17 +102,34 @@
                       <div class="btn-list flex-nowrap d-flex justify-content-center">
                         <div class="col-6 col-sm-4 col-md-2 col-xl-auto py-3">
                           <a href="#" class="btn btn-vk w-100 btn-icon" data-bs-toggle="modal" data-bs-target="#modal-detail" data-course-id="<?= $id ?>">
-                            <i class="fa-solid fa-info"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                              <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                              <path d="M12 9h.01" />
+                              <path d="M11 12h1v4h1" />
+                            </svg>
                           </a>
                         </div>
                         <div class="col-6 col-sm-4 col-md-2 col-xl-auto py-3">
                           <a href="#" class="btn btn-twitter w-100 btn-icon" data-bs-toggle="modal" data-bs-target="#modal-update" data-course-id="<?= $id ?>">
-                            <i class="fa-solid fa-pen-to-square"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                              <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                              <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                              <path d="M16 5l3 3" />
+                            </svg>
                           </a>
                         </div>
                         <div class="col-6 col-sm-4 col-md-2 col-xl-auto py-3">
                           <a href="#" class="btn btn-pinterest w-100 btn-icon" data-bs-toggle="modal" data-bs-target="#modal-delete" data-course-id="<?= $id ?>">
-                            <i class="fa-solid fa-trash-can"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                              <path d="M4 7l16 0" />
+                              <path d="M10 11l0 6" />
+                              <path d="M14 11l0 6" />
+                              <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                              <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                            </svg>
                           </a>
                         </div>
                       </div>
@@ -112,7 +145,10 @@
           <ul class="pagination m-0 ms-auto">
             <li class="page-item disabled">
               <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                <i class="fa-solid fa-chevron-left"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M15 6l-6 6l6 6" />
+                </svg>
                 prev
               </a>
             </li>
@@ -124,7 +160,10 @@
             <li class="page-item">
               <a class="page-link" href="#">
                 next
-                <i class="fa-solid fa-chevron-right"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M9 6l6 6l-6 6" />
+                </svg>
               </a>
             </li>
           </ul>
@@ -188,11 +227,11 @@
               <div class="form-label">Status</div>
               <div>
                 <label class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="radios-inline" checked>
+                  <input class="form-check-input" type="radio" value="0" name="status-add" checked>
                   <span class="form-check-label">Public</span>
                 </label>
                 <label class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="radios-inline">
+                  <input class="form-check-input" type="radio" value="1" name="status-add">
                   <span class="form-check-label">Hidden</span>
                 </label>
               </div>
@@ -252,7 +291,7 @@
             <div class="mb-3">
               <div class="form-label">Category</div>
               <select name="category-update" class="form-select">
-                <option value="#" selected>-- Category --</option>
+                <option value="-1" selected>-- Category --</option>
                 <?php
                 $categories = $data['categories'];
                 foreach ($categories as $key => $value) :
@@ -265,11 +304,11 @@
               <div class="form-label">Status</div>
               <div>
                 <label class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="status-update">
+                  <input class="form-check-input" type="radio" value="0" name="status-update">
                   <span class="form-check-label">Public</span>
                 </label>
                 <label class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="status-update">
+                  <input class="form-check-input" type="radio" value="1" name="status-update">
                   <span class="form-check-label">Hidden</span>
                 </label>
               </div>
@@ -304,16 +343,8 @@
             <div class="text-secondary">Do you really want to remove this course? What you've done cannot be undone.</div>
           </div>
           <div class="modal-footer">
-            <div class="w-100">
-              <div class="row">
-                <div class="col"><a href="#" class="btn w-100" data-bs-dismiss="modal">
-                    Cancel
-                  </a></div>
-                <div class="col"><a href="#" class="btn btn-danger w-100" data-bs-dismiss="modal">
-                    Delete Course
-                  </a></div>
-              </div>
-            </div>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" name="btn-delete-course" class="btn btn-primary">Delete Course</button>
           </div>
         </form>
       </div>

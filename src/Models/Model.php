@@ -41,7 +41,7 @@ class Model
             return false;
         }
 
-        $fields = implode(',', array_keys($data));
+        $fields = implode(', ', array_keys($data));
 
         $values = "'" . implode("','", array_values($data)) . "'";
 
