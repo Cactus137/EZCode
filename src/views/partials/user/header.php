@@ -9,9 +9,9 @@
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
     <a href="/" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-        <h2 class="m-0 text-primary">
-            <img src="<?= asset('img/user/Logo.png')?>" width="50px" class="mb-2">
-            </i>EZCode
+        <h2 class="m-0" style="color: #23C2D1" >
+            <img src="<?= asset('img/shared/logo.png') ?>" width="50px" class="mb-2">
+            EZCode
         </h2>
     </a>
     <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -25,32 +25,36 @@
             <a href="/blog" class="nav-item nav-link">Blog</a>
             <a href="/contact" class="nav-item nav-link">Contact</a>
             <a href="/my-course" class="nav-item nav-link">My courses</a>
-            <div class="nav-item d-flex align-items-center text-decoration-none me-3">
-                <button id="modalLogin" type="button" class="btn btn-secondary rounded-pill px-4 text-light" data-bs-toggle="modal" data-bs-target="#loginModal">Log in</button>
-            </div>
-            <div class="nav-item d-flex align-items-center text-decoration-none me-3">
-                <button id="modalRegister" type="button" class="btn btn-info rounded-pill px-4 text-light" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
-            </div>
-            <div class="btn-group me-5">
-                <a class="d-flex align-items-center" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                    <i class="fa-solid fa-user" style="color: rgba(0,0,0,.55)"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-lg-end">
-                    <li>
-                        <div class="profile ms-3 d-flex mb-3 border-bottom" style="min-width: 200px;">
-                            <div class="p-0 d-flex align-items-center">
-                                <img src="<?= asset('img/accounts/profile.jpg')?>" class="mb-3 rounded-circle me-3" width="45px">
+            <?php if (!isset($_SESSION['user'])) : ?>
+                <div class="nav-item d-flex align-items-center text-decoration-none me-3">
+                    <button id="modalLogin" type="button" class="btn btn-secondary rounded-pill px-4 text-light" data-bs-toggle="modal" data-bs-target="#loginModal">Log in</button>
+                </div>
+                <div class="nav-item d-flex align-items-center text-decoration-none me-3">
+                    <button id="modalRegister" type="button" class="btn btn-info rounded-pill px-4 text-light" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
+                </div>
+            <?php endif;
+            if (isset($_SESSION['user'])) : ?>
+                <div class="btn-group me-5">
+                    <a class="d-flex align-items-center" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                        <i class="fa-solid fa-user" style="color: rgba(0,0,0,.55)"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-lg-end">
+                        <li>
+                            <div class="profile ms-3 d-flex mb-3 border-bottom" style="min-width: 200px;">
+                                <div class="p-0 d-flex align-items-center">
+                                    <img src="<?= asset('img/accounts/profile.jpg') ?>" class="mb-3 rounded-circle me-3" width="45px">
+                                </div>
+                                <div class="ms-2">
+                                    <div class="row">Le Van Thanh</div>
+                                    <div class="row text-secondary">@fdklas</div>
+                                </div>
                             </div>
-                            <div class="ms-2">
-                                <div class="row">Le Van Thanh</div>
-                                <div class="row text-secondary">@fdklas</div>
-                            </div>
-                        </div>
-                    </li>
-                    <li><button class="dropdown-item" type="button">Profile</button></li>
-                    <li><button class="dropdown-item" type="button">Log out</button></li>
-                </ul>
-            </div>
+                        </li> 
+                        <li><a href="#" class="dropdown-item text-decoration-none text-dark">Profile</a></li>
+                        <li><a href="/logout" class="dropdown-item text-decoration-none text-dark">Log out</a></li>
+                    </ul>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </nav>
@@ -65,7 +69,7 @@
                     <button type="button" class="btn-close close-registerModal" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="top mt-3 text-center mb-5">
-                    <img class="mb-2" src="img/Logo.png" width="50px">
+                    <img class="mb-2" src="<?= asset('img/shared/logo.png') ?>" width="50px">
                     <div class="row">
                         <div class="col-12">
                             <h2 class="text-center">Register account EZCode</h2>
@@ -73,25 +77,25 @@
                     </div>
                 </div>
                 <div class="register px-4 mb-5">
-                    <form action="" method="post">
+                    <form action="/register" method="post">
                         <div class="mb-3">
                             <label class="form-label">Username</label>
-                            <input type="username" class="form-control" placeholder="Username">
+                            <input type="text" name="username" class="form-control" placeholder="Username">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Email</label>
-                            <input type="email" class="form-control" placeholder="Email">
+                            <input type="text" name="email" class="form-control" placeholder="Email">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Password</label>
-                            <input type="password" class="form-control" placeholder="Password">
+                            <input type="password" name="password" class="form-control" placeholder="Password">
                         </div>
                         <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input">
+                            <input type="checkbox" class="form-check-input" name="acceptTerms">
                             <label class="form-check-label">I accept and agree to the <a href="#">Terms and conditions</a></label>
                         </div>
                         <div class="mb-3 text-center w-100">
-                            <button type="submit" class="btn btn-primary mt-3 w-100">Register</button>
+                            <button type="submit" name="btn-register" class="btn btn-primary mt-3 w-100">Register</button>
                         </div>
                         <div class="mb-3 form-check text-center">
                             <p class="text-center">Already have an account? <a href="#" id="loginLink">Log in</a></p>
@@ -111,7 +115,7 @@
                     <button type="button" class="btn-close close-loginModal" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="top mt-3 text-center mb-5">
-                    <img class="mb-2" src="img/Logo.png" width="50px">
+                    <img class="mb-2" src="<?= asset('img/shared/logo.png') ?>" width="50px">
                     <div class="row">
                         <div class="col-12">
                             <h2 class="text-center">Log in EZCode</h2>
@@ -119,24 +123,24 @@
                     </div>
                 </div>
                 <div class="register px-4 mb-5">
-                    <form action="" method="post">
+                    <form action="/login" method="post">
                         <div class="mb-3">
-                            <label class="form-label">Username/Email</label>
-                            <input type="email" class="form-control" placeholder="Username/Email">
+                            <label class="form-label">Username</label>
+                            <input type="text" name="username" class="form-control" placeholder="Username">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Password</label>
-                            <input type="password" class="form-control" placeholder="Password">
+                            <input type="password" name="password" class="form-control" placeholder="Password">
                         </div>
                         <div class="mb-3 form-check text-end">
                             <a href="#" id="modalForgotPassword" class="text-decoration-none text-secondary" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Forgot password?</a>
                         </div>
                         <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input">
+                            <input type="checkbox" class="form-check-input" name="acceptTerms">
                             <label class="form-check-label">I accept and agree to the <a href="#">Terms and conditions</a></label>
                         </div>
                         <div class="mb-3 text-center w-100">
-                            <button type="submit" class="btn btn-primary mt-3 w-100">Log in</button>
+                            <button type="submit" name="btn-login" class="btn btn-primary mt-3 w-100">Log in</button>
                         </div>
                         <div class="mb-3 form-check text-center">
                             <p class="text-center">Don't have an account?? <a href="#" id="registerLink">Register</a></p>
@@ -156,7 +160,7 @@
                     <button type="button" class="btn-close close-forgotPasswordModal" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="top mt-3 text-center mb-5">
-                    <img class="mb-2" src="img/Logo.png" width="50px">
+                    <img class="mb-2" src="<?= asset('img/shared/logo.png') ?>" width="50px">
                     <div class="row">
                         <div class="col-12">
                             <h2 class="text-center">Forgot your password?</h2>
@@ -165,13 +169,13 @@
                     </div>
                 </div>
                 <div class="register px-4 mb-5">
-                    <form action="" method="post">
+                    <form action="/forgot-password" method="post">
                         <div class="mb-3">
                             <label class="form-label">Email</label>
-                            <input type="email" class="form-control" placeholder="Your Email">
+                            <input type="text" name="email" class="form-control" placeholder="Your Email">
                         </div>
                         <div class="mb-3 text-center w-100">
-                            <button type="submit" class="btn btn-primary mt-3 w-100">Reset</button>
+                            <button type="submit" name="btn-forgot" class="btn btn-primary mt-3 w-100">Reset</button>
                         </div>
                     </form>
                 </div>

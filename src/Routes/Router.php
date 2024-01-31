@@ -133,22 +133,27 @@ $router->get('/admin/invoice', function () {
 });
 // }); 
 
-
+// Exception
 $router->get('/404', function () {
     $exception = (new ExceptionController())->notFound();
 });
-
 $router->get('/405', function () {
     $exception = (new ExceptionController())->notAllowed();
-});
+}); 
 
 // Auth
 // Login
-$router->get('/login', function () {
+$router->post('/login', function () {
     $auth = (new AuthController())->login();
 });
 // Register
-// Logout 
+$router->post('/register', function () {
+    $auth = (new AuthController())->register();
+});
+// Logout
+$router->get('/logout', function () {
+    $auth = (new AuthController())->logout();
+}); 
 
 // API Category
 $router->get('/api/category/{id}', function ($id) {

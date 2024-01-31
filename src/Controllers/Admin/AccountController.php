@@ -36,29 +36,18 @@ class AccountController extends Controller
             $account = new Account();
 
             $checkValidate = true;
-            if (empty($username_add) || strlen($username_add) < 6) {
+            $regex_username = '/^[A-Za-z][A-Za-z0-9]{5,31}$/';
+            $regex_password = '/^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/';
+            $regex_email = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
+
+            if (!preg_match($regex_username, $username_add)) {
                 $checkValidate = false;
-            } else {
-                $regex_username = '/^(?=.*[a-z])(?=.*\d)[a-z\d]{6,}$/';
-                if (!preg_match($regex_username, $username_add)) {
-                    $checkValidate = false;
-                }
             }
-            if (empty($password_add) || strlen($password_add) < 6) {
+            if (!preg_match($regex_password, $password_add)) {
                 $checkValidate = false;
-            } else {
-                $regex_password = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[a-zA-Z\d!@#$%^&*()_+]{10,}$/';
-                if (!preg_match($regex_password, $password_add)) {
-                    $checkValidate = false;
-                }
             }
-            if (empty($email_add)) {
+            if (!preg_match($regex_email, $email_add)) {
                 $checkValidate = false;
-            } else {
-                $regex_email = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
-                if (!preg_match($regex_email, $email_add)) {
-                    $checkValidate = false;
-                }
             }
 
             if ($checkValidate == true) {
@@ -133,29 +122,18 @@ class AccountController extends Controller
             $account = new Account();
 
             $checkValidate = true;
-            if (empty($username_update) || strlen($username_update) < 6) {
+            $regex_username = '/^[A-Za-z][A-Za-z0-9]{5,31}$/';
+            $regex_password = '/^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/';
+            $regex_email = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
+
+            if (!preg_match($regex_username, $username_update)) {
                 $checkValidate = false;
-            } else {
-                $regex_username = '/^(?=.*[a-z])(?=.*\d)[a-z\d]{6,}$/';
-                if (!preg_match($regex_username, $username_update)) {
-                    $checkValidate = false;
-                }
             }
-            if (empty($password_update) || strlen($password_update) < 6) {
+            if (!preg_match($regex_password, $password_update)) {
                 $checkValidate = false;
-            } else {
-                $regex_password = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[a-zA-Z\d!@#$%^&*()_+]{10,}$/';
-                if (!preg_match($regex_password, $password_update)) {
-                    $checkValidate = false;
-                }
             }
-            if (empty($email_update)) {
+            if (!preg_match($regex_email, $email_update)) {
                 $checkValidate = false;
-            } else {
-                $regex_email = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
-                if (!preg_match($regex_email, $email_update)) {
-                    $checkValidate = false;
-                }
             }
 
             if ($checkValidate == true) {
