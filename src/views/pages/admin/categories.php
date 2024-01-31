@@ -1,19 +1,3 @@
-<style>
-  .alert {
-    position: relative;
-    animation: myfirst 0.8s forwards;
-  }
-
-  @keyframes myfirst {
-    0% {
-      right: -300px;
-    }
-
-    100% {
-      right: 0px;
-    }
-  }
-</style>
 <div class="page-wrapper position-relative">
   <?php
   if (isset($_SESSION['notify'])) {

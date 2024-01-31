@@ -14,6 +14,7 @@ use App\Controllers\Admin\InvoiceController;
 // Api Controller
 use App\Controllers\Api\CourseControllerApi;
 use App\Controllers\Api\CategoryControllerApi;
+use App\Controllers\Api\AccountControllerApi;
 // Exception Controller
 use App\Controllers\ExceptionController;
 // Auth Controller
@@ -110,13 +111,25 @@ $router->post('/admin/course/update-course', function () {
 $router->post('/admin/course/delete-course', function () {
     $course = (new CoursesControllerAdmin())->delete();
 });
+// Account Admin
+$router->get('/admin/account', function () {
+    $account = (new AccountController())->index();
+});
+// Add Account
+$router->post('/admin/account/add-account', function () {
+    $account = (new AccountController())->add();
+});
+// Update Account
+$router->post('/admin/account/update-account', function () {
+    $account = (new AccountController())->update();
+});
+// Delete Account
+$router->post('/admin/account/delete-account', function () {
+    $account = (new AccountController())->delete();
+});
 $router->get('/admin/invoice', function () {
     $invoice = (new InvoiceController())->index();
     $invoice;
-});
-
-$router->get('/admin/account', function () {
-    $account = (new AccountController())->index();
 });
 // }); 
 
@@ -129,21 +142,15 @@ $router->get('/405', function () {
     $exception = (new ExceptionController())->notAllowed();
 });
 
-// $router->get('/login', function () {
-//     $auth = new AuthController();
-//     $auth->login();
-// });
+// Auth
+// Login
+$router->get('/login', function () {
+    $auth = (new AuthController())->login();
+});
+// Register
+// Logout 
 
-// $router->post('/login', function () {
-//     $auth = new AuthController();
-//     $auth->loginPost();
-// });
-
-// $router->get('/api/courses', function () {
-//     $course = new CourseControllerApi();
-//     $course->index();
-// });
-
+// API Category
 $router->get('/api/category/{id}', function ($id) {
     $category = new CategoryControllerApi();
     $category->show($id);
@@ -152,6 +159,11 @@ $router->get('/api/category/{id}', function ($id) {
 $router->get('/api/course/{id}', function ($id) {
     $course = new CourseControllerApi();
     $course->show($id);
+});
+// API Account
+$router->get('/api/account/{id}', function ($id) {
+    $account = new AccountControllerApi();
+    $account->show($id);
 });
 
 $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());

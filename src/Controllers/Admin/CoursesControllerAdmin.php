@@ -29,18 +29,18 @@ class CoursesControllerAdmin extends Controller
     public function add()
     {
         if (isset($_POST['btn-add-course'])) {
-            $name_add = $_POST['name-add'];
-            $price_add = (int)$_POST['price-add'];
-            $author_add = $_POST['author-add'];
-            $title_add = $_POST['title-add'];
-            $description_add = $_POST['description-add'];
+            $name_add = trim($_POST['name-add']);
+            $price_add = trim((int)$_POST['price-add']);
+            $author_add = trim($_POST['author-add']);
+            $title_add = trim($_POST['title-add']);
+            $description_add = trim($_POST['description-add']);
             $category_add = $_POST['category-add'];
             $status_add = $_POST['status-add'];
 
             $course = new Course();
 
             $checkValidate = true;
-            if (empty($name_add) || empty($author_add) || empty($title_add) || empty($description_add)) {
+            if (empty($name_add) || empty($author_add) || empty($title_add)) {
                 $checkValidate = false;
             }
             if (empty($price_add) || is_numeric($price_add) == false) {
@@ -53,7 +53,7 @@ class CoursesControllerAdmin extends Controller
 
             if ($checkValidate == true) {
                 if ($_FILES['thumbnail-add']['name']) {
-                    $target_dir = asset('img/courses/');
+                    $target_dir = getcwd() . DIRECTORY_SEPARATOR . asset('img/courses/');
                     $target_file = $target_dir . basename($_FILES["thumbnail-add"]["name"]);
                     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
                     $uploadOk = true;
@@ -119,18 +119,18 @@ class CoursesControllerAdmin extends Controller
     {
         if (isset($_POST['btn-update-course'])) {
             $id_update = $_POST['id-update'];
-            $name_update = $_POST['name-update'];
-            $price_update = (int)$_POST['price-update'];
-            $author_update = $_POST['author-update'];
-            $title_update = $_POST['title-update'];
-            $description_update = $_POST['description-update'];
+            $name_update = trim($_POST['name-update']);
+            $price_update = trim((int)$_POST['price-update']);
+            $author_update = trim($_POST['author-update']);
+            $title_update = trim($_POST['title-update']);
+            $description_update = trim($_POST['description-update']);
             $category_update = $_POST['category-update'];
             $status_update = $_POST['status-update'];
 
             $course = new Course();
 
             $checkValidate = true;
-            if (empty($name_update) || empty($author_update) || empty($title_update) || empty($description_update)) {
+            if (empty($name_update) || empty($author_update) || empty($title_update)) {
                 $checkValidate = false;
             }
             if (empty($price_update) || is_numeric($price_update) == false) {
@@ -141,7 +141,7 @@ class CoursesControllerAdmin extends Controller
             }
             if ($checkValidate == true) {
                 if ($_FILES['thumbnail-update']['name']) {
-                    $target_dir = 'http://localhost:8000/public/';
+                    $target_dir = getcwd() . DIRECTORY_SEPARATOR . asset('img/courses/');
                     $target_file = $target_dir . basename($_FILES["thumbnail-update"]["name"]);
                     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
                     $uploadOk = true;
@@ -153,9 +153,12 @@ class CoursesControllerAdmin extends Controller
                         $uploadOk = false;
                     }
                     if ($uploadOk) {
-                        move_uploaded_file($_FILES["thumbnail-update"]["tmp_name"], $target_file);  
-                        var_dump(move_uploaded_file($_FILES["thumbnail-update"]["tmp_name"], $target_file));
-                        die;
+                        // Remove file image in folder
+                        $thumbnail_old = $course->find(['id' => $id_update])[0]['thumbnail'];
+                        unlink($target_dir . $thumbnail_old);
+                        // Upload new file image
+                        move_uploaded_file($_FILES["thumbnail-update"]["tmp_name"], $target_file);
+
                         $dataUpdate = [
                             'name' => $name_update,
                             'price' => $price_update,
@@ -207,6 +210,11 @@ class CoursesControllerAdmin extends Controller
             $id_delete = $_POST['id-delete'];
             $course = new Course();
 
+            // Remove file image in folder
+            $thumbnail_delete = $course->find(['id' => $id_delete])[0]['thumbnail'];
+            $target_dir = getcwd() . DIRECTORY_SEPARATOR . asset('img/courses/');
+            $target_file = $target_dir . $thumbnail_delete;
+            unlink($target_file);
             $course->destroy($id_delete);
             // Notion: [0: success, 1: fail]
             $_SESSION['notify-course'] = [0, 'success', 'Delete course successfully!'];

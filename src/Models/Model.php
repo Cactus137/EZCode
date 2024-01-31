@@ -30,7 +30,7 @@ class Model
         }
 
         $sql = substr($sql, 0, -4); 
-        
+
         return $this->connection->query($sql);
     }
 

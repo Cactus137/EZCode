@@ -1,19 +1,3 @@
-<style>
-  .alert {
-    position: relative;
-    animation: myfirst 0.8s forwards;
-  }
-
-  @keyframes myfirst {
-    0% {
-      right: -300px;
-    }
-
-    100% {
-      right: 0px;
-    }
-  }
-</style>
 <div class="page-wrapper">
   <?php
   if (isset($_SESSION['notify-course'])) {
@@ -95,7 +79,7 @@
                     <td><?= $name ?></td>
                     <td><?= $price ?></td>
                     <td><?= $created_at ?></td>
-                    <td class="sort-status text-center" data-status="<?php $status; ?>">
+                    <td class="sort-status text-center">
                       <div class="col-auto"><span class="badge bg-<?= $status == 1 ? "red" : "green"; ?> me-2"></span><?= $status == 1 ? "Hidden" : "Public"; ?></div>
                     </td>
                     <td>
@@ -214,7 +198,7 @@
             <div class="mb-3">
               <div class="form-label">Category</div>
               <select name="category-add" class="form-select">
-                <option value="#" selected>-- Category --</option>
+                <option value="-1" selected>-- Category --</option>
                 <?php
                 $categories = $data['categories'];
                 foreach ($categories as $key => $value) :
@@ -445,7 +429,6 @@
               titleInput.value = response[0].title;
               descriptionInput.value = response[0].description;
               statusInput[response[0].status].checked = true;
-              console.log(categoryInput);
               categoryInput.forEach(function(category) {
                 if (category.value == response[0].id_category) {
                   category.selected = true;

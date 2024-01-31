@@ -25,6 +25,21 @@
         body {
             font-feature-settings: "cv03", "cv04", "cv11";
         }
+
+        .alert {
+            position: relative;
+            animation: myfirst 0.8s forwards;
+        }
+
+        @keyframes myfirst {
+            0% {
+                right: -300px;
+            }
+
+            100% {
+                right: 0px;
+            }
+        }
     </style>
 </head>
 
