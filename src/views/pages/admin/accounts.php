@@ -63,25 +63,13 @@
                     <td>
                       <div class="btn-list flex-nowrap d-flex justify-content-center">
                         <div class="col-6 col-sm-4 col-md-2 col-xl-auto py-3">
-                          <a href="#" class="btn btn-twitter w-100 btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report1">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                              <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                              <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                              <path d="M16 5l3 3" />
-                            </svg>
+                          <a href="#" class="btn btn-twitter w-100 btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report1" data-va>
+                            <i class="fa-solid fa-pen-to-square"></i>
                           </a>
                         </div>
                         <div class="col-6 col-sm-4 col-md-2 col-xl-auto py-3">
                           <a href="#" class="btn btn-pinterest w-100 btn-icon" aria-label="Youtube" data-bs-toggle="modal" data-bs-target="#modal-danger">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                              <path d="M4 7l16 0" />
-                              <path d="M10 11l0 6" />
-                              <path d="M14 11l0 6" />
-                              <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                              <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                            </svg>
+                            <i class="fa-solid fa-trash-can"></i>
                           </a>
                         </div>
                       </div>
@@ -97,11 +85,7 @@
           <ul class="pagination m-0 ms-auto">
             <li class="page-item disabled">
               <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M15 6l-6 6l6 6" />
-                </svg>
+                <i class="fa-solid fa-chevron-left"></i>
                 prev
               </a>
             </li>
@@ -113,10 +97,7 @@
             <li class="page-item">
               <a class="page-link" href="#">
                 next
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M9 6l6 6l-6 6" />
-                </svg>
+                <i class="fa-solid fa-chevron-right"></i>
               </a>
             </li>
           </ul>
@@ -131,90 +112,74 @@
           <h5 class="modal-title">Add Account</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="mb-3">
-                <label class="form-label">Username</label>
-                <div class="input-icon mb-3">
-                  <span class="input-icon-addon">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/user -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
-                      <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
-                    </svg>
-                  </span>
-                  <input type="text" value="" class="form-control" placeholder="Username">
+        <form action="/admin/account/add-account" method="post" enctype="multipart/form-data">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Username</label>
+                  <div class="mb-3">
+                    <input type="text" value="" name="username-add" class="form-control" placeholder="Username">
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Fullname</label>
+                  <input type="text" class="form-control" name="fullname-add" placeholder="Fullname">
                 </div>
               </div>
             </div>
-            <div class="col-lg-6">
-              <div class="mb-3">
-                <label class="form-label">Fullname</label>
-                <input type="text" class="form-control" name="example-fullname-input" placeholder="Fullname">
-              </div>
+            <div class="mb-3">
+              <div class="form-label">Avatar</div>
+              <input type="file" class="form-control" name="avatar-add" />
             </div>
-          </div>
-          <div class="mb-3">
-            <div class="form-label">Avatar</div>
-            <input type="file" class="form-control" />
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input type="text" class="form-control" name="example-email-input" placeholder="Email">
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Password</label>
-            <input type="text" class="form-control" name="example-password-input" placeholder="Password">
-          </div>
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="mb-3">
-                <div class="form-label">Role</div>
-                <div>
-                  <label class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="role-radios-inline" checked>
-                    <span class="form-check-label">Admin</span>
-                  </label>
-                  <label class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="role-radios-inline">
-                    <span class="form-check-label">Client</span>
-                  </label>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="text" class="form-control" name="email-add" placeholder="Email">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="text" class="form-control" name="password-add" placeholder="Password">
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <div class="form-label">Role</div>
+                  <div>
+                    <label class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="role-add">
+                      <span class="form-check-label">Admin</span>
+                    </label>
+                    <label class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="role-add" checked>
+                      <span class="form-check-label">Client</span>
+                    </label>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="mb-3">
-                <div class="form-label">Status</div>
-                <div>
-                  <label class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="status-radios-inline" checked>
-                    <span class="form-check-label">Public</span>
-                  </label>
-                  <label class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="status-radios-inline">
-                    <span class="form-check-label">Hidden</span>
-                  </label>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <div class="form-label">Status</div>
+                  <div>
+                    <label class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="status-add" checked>
+                      <span class="form-check-label">Public</span>
+                    </label>
+                    <label class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="status-add">
+                      <span class="form-check-label">Hidden</span>
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
-            Cancel
-          </a>
-          <a href="#" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
-            <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M12 5l0 14" />
-              <path d="M5 12l14 0" />
-            </svg>
-            Add Account
-          </a>
-        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" name="btn-add-account" class="btn btn-primary">Add Account</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -225,88 +190,74 @@
           <h5 class="modal-title">Update Account</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="mb-3">
-                <label class="form-label">Username</label>
-                <div class="input-icon mb-3">
-                  <span class="input-icon-addon">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/user -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
-                      <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
-                    </svg>
-                  </span>
-                  <input type="text" value="" class="form-control" placeholder="Username">
+        <form action="/admin/account/update-account" method="post" enctype="multipart/form-data">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Username</label>
+                  <div class="mb-3">
+                    <input type="text" value="" name="username-update" class="form-control" placeholder="Username">
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Fullname</label>
+                  <input type="text" class="form-control" name="fullname-update" placeholder="Fullname">
                 </div>
               </div>
             </div>
-            <div class="col-lg-6">
-              <div class="mb-3">
-                <label class="form-label">Fullname</label>
-                <input type="text" class="form-control" name="example-fullname-input" placeholder="Fullname">
-              </div>
+            <div class="mb-3">
+              <div class="form-label">Avatar</div>
+              <input type="file" class="form-control" name="avatar-update" />
             </div>
-          </div>
-          <div class="mb-3">
-            <div class="form-label">Avatar</div>
-            <input type="file" class="form-control" />
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input type="text" class="form-control" name="example-email-input" placeholder="Email">
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Password</label>
-            <input type="text" class="form-control" name="example-password-input" placeholder="Password">
-          </div>
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="mb-3">
-                <div class="form-label">Role</div>
-                <div>
-                  <label class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="role-radios-inline" checked>
-                    <span class="form-check-label">Admin</span>
-                  </label>
-                  <label class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="role-radios-inline">
-                    <span class="form-check-label">Client</span>
-                  </label>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="text" class="form-control" name="email-update" placeholder="Email">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="text" class="form-control" name="password-update" placeholder="Password">
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <div class="form-label">Role</div>
+                  <div>
+                    <label class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="role-update">
+                      <span class="form-check-label">Admin</span>
+                    </label>
+                    <label class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="role-update">
+                      <span class="form-check-label">Client</span>
+                    </label>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="mb-3">
-                <div class="form-label">Status</div>
-                <div>
-                  <label class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="status-radios-inline" checked>
-                    <span class="form-check-label">Public</span>
-                  </label>
-                  <label class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="status-radios-inline">
-                    <span class="form-check-label">Hidden</span>
-                  </label>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <div class="form-label">Status</div>
+                  <div>
+                    <label class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="status-update">
+                      <span class="form-check-label">Public</span>
+                    </label>
+                    <label class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="status-update">
+                      <span class="form-check-label">Hidden</span>
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
-            Cancel
-          </a>
-          <a href="#" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M5 12l5 5l10 -10" />
-            </svg>
-            Update Account
-          </a>
-        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" name="btn-update-account" class="btn btn-primary">Update Account</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -316,7 +267,6 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         <div class="modal-status bg-danger"></div>
         <div class="modal-body text-center py-4">
-          <!-- Download SVG icon from http://tabler-icons.io/i/alert-triangle -->
           <svg xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-danger icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M10.24 3.957l-8.422 14.06a1.989 1.989 0 0 0 1.7 2.983h16.845a1.989 1.989 0 0 0 1.7 -2.983l-8.423 -14.06a1.989 1.989 0 0 0 -3.4 0z" />

@@ -17,7 +17,7 @@ class Model
 
     public function all()
     {
-        $sql = "SELECT * FROM $this->table";
+        $sql = "SELECT * FROM $this->table ORDER BY id DESC" ;
         return $this->connection->query($sql);
     }
 
@@ -46,7 +46,26 @@ class Model
         $values = "'" . implode("','", array_values($data)) . "'";
 
         $sql = "INSERT INTO $this->table ($fields) VALUES ($values)";
+        return $this->connection->query($sql);
+    }
 
+    public function update(array $data, $id)
+    {
+        if (empty($data) || !is_array($data)) {
+
+            return false;
+        }
+
+        $fields = '';
+
+        foreach ($data as $key => $value) {
+            $fields .= "$key = '$value',";
+        }
+
+        $fields = substr($fields, 0, -1);
+
+        $sql = "UPDATE $this->table SET $fields WHERE id = $id";
+        var_dump($sql);
         return $this->connection->query($sql);
     }
 

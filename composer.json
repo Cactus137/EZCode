@@ -13,6 +13,7 @@
         }
     ],
     "require": {
-        "phroute/phroute": "^2.2"
+        "phroute/phroute": "^2.2",
+        "eftec/bladeone": "^4.9"
     }
 }

@@ -1,7 +1,7 @@
 <style>
   .alert {
     position: relative;
-    animation: myfirst 1.5s forwards;
+    animation: myfirst 0.8s forwards;
   }
 
   @keyframes myfirst {
@@ -15,31 +15,19 @@
   }
 </style>
 <div class="page-wrapper position-relative">
-  <?php  
+  <?php
   if (isset($_SESSION['notify'])) {
-    if ($_SESSION['notify'] == '0') {
-      echo '<div class="position-absolute end-0 mt-5" style="z-index: 100;">
-                <div class="alert alert-success alert-dismissible" role="alert" style="width: 300px;">
+    echo '<div class="position-absolute end-0 mt-5">
+                <div class="alert alert-' . $_SESSION['notify'][1] . ' alert-dismissible" role="alert" style="width: 300px;">
                   <div class="d-flex">
-                    <div>
-                      Add category successfully!
-                    </div>
+                    <div>'
+      . $_SESSION['notify'][2] .
+      '</div>
                   </div>
                   <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
                 </div>
               </div>';
-    } else {
-      echo '<div class="position-absolute end-0 mt-5" style="z-index: 100;">
-                <div class="alert alert-danger alert-dismissible" role="alert" style="width: 300px;">
-                  <div class="d-flex">
-                    <div>
-                      Add category failed!
-                    </div>
-                  </div>
-                  <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
-                </div>
-              </div>';
-    }
+
     echo '<script>
               const alert = document.querySelectorAll(\'.alert\');
               alert.forEach((item) => {
@@ -109,25 +97,13 @@
                     <td>
                       <div class="btn-list flex-nowrap d-flex justify-content-center">
                         <div class="col-6 col-sm-4 col-md-2 col-xl-auto py-3">
-                          <a href="#" class="btn btn-twitter w-100 btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report1">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                              <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                              <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                              <path d="M16 5l3 3" />
-                            </svg>
+                          <a href="#" class="btn btn-twitter w-100 btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report1" data-category-id="<?= $id ?>">
+                            <i class="fa-solid fa-pen-to-square"></i>
                           </a>
                         </div>
                         <div class="col-6 col-sm-4 col-md-2 col-xl-auto py-3">
-                          <a href="#" class="btn btn-pinterest w-100 btn-icon" aria-label="Youtube" data-bs-toggle="modal" data-bs-target="#modal-danger">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                              <path d="M4 7l16 0" />
-                              <path d="M10 11l0 6" />
-                              <path d="M14 11l0 6" />
-                              <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                              <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                            </svg>
+                          <a href="#" class="btn btn-pinterest w-100 btn-icon" aria-label="Youtube" data-bs-toggle="modal" data-bs-target="#modal-danger" data-category-id="<?= $id ?>">
+                            <i class="fa-solid fa-trash-can"></i>
                           </a>
                         </div>
                       </div>
@@ -143,11 +119,7 @@
           <ul class="pagination m-0 ms-auto">
             <li class="page-item disabled">
               <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M15 6l-6 6l6 6" />
-                </svg>
+                <i class="fa-solid fa-chevron-left"></i>
                 prev
               </a>
             </li>
@@ -159,10 +131,7 @@
             <li class="page-item">
               <a class="page-link" href="#">
                 next
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M9 6l6 6l-6 6" />
-                </svg>
+                <i class="fa-solid fa-chevron-right"></i>
               </a>
             </li>
           </ul>
@@ -217,41 +186,40 @@
           <h5 class="modal-title">Update category</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label class="form-label">Name</label>
-            <input type="text" class="form-control" name="example-text-input" placeholder="Your report name">
-          </div>
-          <div class="mb-3">
-            <div class="form-label">Thumbnail</div>
-            <input type="file" class="form-control" />
-          </div>
-          <div class="mb-3">
-            <div class="form-label">Status</div>
-            <div>
-              <label class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="radios-inline" checked>
-                <span class="form-check-label">Public</span>
-              </label>
-              <label class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="radios-inline">
-                <span class="form-check-label">Hidden</span>
-              </label>
+        <form action="/admin/category/update-category" method="post" enctype="multipart/form-data">
+          <div class="modal-body">
+            <div class="mb-3">
+              <input type="hidden" class="form-control" name="id-update">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-control" name="name-update" placeholder="Your report name">
+            </div>
+            <div class="mb-3">
+              <div class="form-label">Thumbnail</div>
+              <input type="file" class="form-control" name="thumbnail-update" />
+            </div>
+            <div class="mb-3">
+              <div class="form-label">Status</div>
+              <div>
+                <label class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="status-update" value="0">
+                  <span class="form-check-label">Public</span>
+                </label>
+                <label class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="status-update" value="1">
+                  <span class="form-check-label">Hidden</span>
+                </label>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
-            Cancel
-          </a>
-          <a href="#" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M5 12l5 5l10 -10" />
-            </svg>
-            Update category
-          </a>
-        </div>
+          <div class="modal-footer">
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" name="btn-update-category" class="btn btn-primary">Update category</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -260,29 +228,25 @@
       <div class="modal-content">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         <div class="modal-status bg-danger"></div>
-        <div class="modal-body text-center py-4">
-          <!-- Download SVG icon from http://tabler-icons.io/i/alert-triangle -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-danger icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M10.24 3.957l-8.422 14.06a1.989 1.989 0 0 0 1.7 2.983h16.845a1.989 1.989 0 0 0 1.7 -2.983l-8.423 -14.06a1.989 1.989 0 0 0 -3.4 0z" />
-            <path d="M12 9v4" />
-            <path d="M12 17h.01" />
-          </svg>
-          <h3>Are you sure?</h3>
-          <div class="text-secondary">Do you really want to remove this category? What you've done cannot be undone.</div>
-        </div>
-        <div class="modal-footer">
-          <div class="w-100">
-            <div class="row">
-              <div class="col"><a href="#" class="btn w-100" data-bs-dismiss="modal">
-                  Cancel
-                </a></div>
-              <div class="col"><a href="#" class="btn btn-danger w-100" data-bs-dismiss="modal">
-                  Delete category
-                </a></div>
+        <form action="/admin/category/delete-category" method="post">
+          <div class="modal-body text-center py-4">
+            <div class="mb-3">
+              <input type="hidden" class="form-control" name="id-delete">
             </div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-danger icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M10.24 3.957l-8.422 14.06a1.989 1.989 0 0 0 1.7 2.983h16.845a1.989 1.989 0 0 0 1.7 -2.983l-8.423 -14.06a1.989 1.989 0 0 0 -3.4 0z" />
+              <path d="M12 9v4" />
+              <path d="M12 17h.01" />
+            </svg>
+            <h3>Are you sure?</h3>
+            <div class="text-secondary">Do you really want to remove this category? What you've done cannot be undone.</div>
           </div>
-        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" name="btn-delete-category" class="btn btn-primary">Delete category</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -308,4 +272,38 @@
         ]
       });
     })
-  </script> 
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const editButtons = document.querySelectorAll('.btn-twitter');
+      const deleteButtons = document.querySelectorAll('.btn-pinterest');
+      // Update
+      editButtons.forEach(function(button) {
+        const categoryId = button.dataset.categoryId;
+        const modal = document.querySelector('#modal-report1');
+        const idInput = modal.querySelector('input[name="id-update"]');
+        const nameInput = modal.querySelector('input[name="name-update"]');
+        const statusInput = modal.querySelectorAll('input[name="status-update"]');
+
+        button.addEventListener('click', function() {
+          fetch(`http://localhost:8000/api/category/${categoryId}`)
+            .then(response => response.json())
+            .then(response => {
+              idInput.value = response[0].id;
+              nameInput.value = response[0].name;
+              statusInput[response[0].status].checked = true;
+            });
+        });
+      });
+
+      // Delete
+      deleteButtons.forEach(function(button) {
+        const categoryId = button.dataset.categoryId;
+        const modal = document.querySelector('#modal-danger');
+        const idInput = modal.querySelector('input[name="id-delete"]');
+
+        button.addEventListener('click', function() {
+          idInput.value = categoryId;
+        });
+      });
+    });
+  </script>

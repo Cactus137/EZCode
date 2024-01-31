@@ -37,7 +37,6 @@
         </div>
     </div>
 </footer>
-</div>
 <script>
     var themeStorageKey = "tablerTheme";
     var defaultTheme = "light";
@@ -97,6 +96,3 @@
         };
     }
 </script>
-</body>
-
-</html>

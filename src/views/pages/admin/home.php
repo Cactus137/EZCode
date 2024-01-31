@@ -59,12 +59,8 @@
                 <div>Conversion rate</div>
                 <div class="ms-auto">
                   <span class="text-green d-inline-flex align-items-center lh-1">
-                    7% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M3 17l6 -6l4 4l8 -8" />
-                      <path d="M14 7l7 0l0 7" />
-                    </svg>
+                    7%
+                    <i class="fa-solid fa-arrow-up ms-2"></i>
                   </span>
                 </div>
               </div>
@@ -96,12 +92,8 @@
                 <div class="h1 mb-0 me-2">$4,300</div>
                 <div class="me-auto">
                   <span class="text-green d-inline-flex align-items-center lh-1">
-                    8% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M3 17l6 -6l4 4l8 -8" />
-                      <path d="M14 7l7 0l0 7" />
-                    </svg>
+                    8%
+                    <i class="fa-solid fa-arrow-up ms-2"></i>
                   </span>
                 </div>
               </div>
@@ -129,11 +121,8 @@
                 <div class="h1 mb-3 me-2">6,782</div>
                 <div class="me-auto">
                   <span class="text-yellow d-inline-flex align-items-center lh-1">
-                    0% <!-- Download SVG icon from http://tabler-icons.io/i/minus -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M5 12l14 0" />
-                    </svg>
+                    0%
+                    <i class="fa-solid fa-minus ms-2"></i>
                   </span>
                 </div>
               </div>
@@ -161,12 +150,8 @@
                 <div class="h1 mb-3 me-2">2,986</div>
                 <div class="me-auto">
                   <span class="text-green d-inline-flex align-items-center lh-1">
-                    4% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M3 17l6 -6l4 4l8 -8" />
-                      <path d="M14 7l7 0l0 7" />
-                    </svg>
+                    4%
+                    <i class="fa-solid fa-arrow-up ms-2"></i>
                   </span>
                 </div>
               </div>
@@ -499,12 +484,8 @@
                   </div>
                   <div class="col">
                     <div>Today's Earning: $4,262.40</div>
-                    <div class="text-secondary"><!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
-                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-inline text-green" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M3 17l6 -6l4 4l8 -8" />
-                        <path d="M14 7l7 0l0 7" />
-                      </svg>
+                    <div class="text-secondary">
+                      <i class="fa-solid fa-arrow-up"></i>
                       +5% more than yesterday
                     </div>
                   </div>
@@ -524,7 +505,7 @@
                 <tbody>
                   <tr>
                     <td class="w-1">
-                      <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                      <span class="avatar avatar-sm" style="background-image: url(#)"></span>
                     </td>
                     <td class="td-truncate">
                       <div class="text-truncate">
@@ -586,7 +567,6 @@
           <div class="card card-md">
             <div class="card-stamp card-stamp-lg">
               <div class="card-stamp-icon bg-primary">
-                <!-- Download SVG icon from http://tabler-icons.io/i/ghost -->
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                   <path d="M5 11a7 7 0 0 1 14 0v7a1.78 1.78 0 0 1 -3.1 1.4a1.65 1.65 0 0 0 -2.6 0a1.65 1.65 0 0 1 -2.6 0a1.65 1.65 0 0 0 -2.6 0a1.78 1.78 0 0 1 -3.1 -1.4v-7" />
@@ -610,73 +590,73 @@
 
   <script src="<?= asset('js/tabler.js') ?>" defer></script>
   <script src="<?= asset('js/demo.js') ?>" defer></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        window.ApexCharts && (new ApexCharts(document.getElementById('chart-tasks-overview'), {
-          chart: {
-            type: "bar",
-            fontFamily: 'inherit',
-            height: 320,
-            parentHeightOffset: 0,
-            toolbar: {
-              show: false,
-            },
-            animations: {
-              enabled: false
-            },
-          },
-          plotOptions: {
-            bar: {
-              columnWidth: '50%',
-            }
-          },
-          dataLabels: {
-            enabled: false,
-          },
-          fill: {
-            opacity: 1,
-          },
-          series: [{
-            name: "A",
-            data: [44, 32, 48, 72, 60, 16, 44, 32, 78, 50, 68, 34, 26, 48, 72, 60, 84, 64, 74, 52, 62, 50, 32, 22]
-          }],
-          tooltip: {
-            theme: 'dark'
-          },
-          grid: {
-            padding: {
-              top: -20,
-              right: 0,
-              left: -4,
-              bottom: -4
-            },
-            strokeDashArray: 4,
-          },
-          xaxis: {
-            labels: {
-              padding: 0,
-            },
-            tooltip: {
-              enabled: false
-            },
-            axisBorder: {
-              show: false,
-            },
-            categories: ['Sprint 1', 'Sprint 2', 'Sprint 3', 'Sprint 4', 'Sprint 5', 'Sprint 6', 'Sprint 7', 'Sprint 8', 'Sprint 9', 'Sprint 10', 'Sprint 11', 'Sprint 12', 'Sprint 13', 'Sprint 14', 'Sprint 15', 'Sprint 16', 'Sprint 17', 'Sprint 18', 'Sprint 19', 'Sprint 20', 'Sprint 21', 'Sprint 22', 'Sprint 23', 'Sprint 24'],
-          },
-          yaxis: {
-            labels: {
-              padding: 4
-            },
-          },
-          colors: ['#21C4D1'],
-          legend: {
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      window.ApexCharts && (new ApexCharts(document.getElementById('chart-tasks-overview'), {
+        chart: {
+          type: "bar",
+          fontFamily: 'inherit',
+          height: 320,
+          parentHeightOffset: 0,
+          toolbar: {
             show: false,
           },
-        })).render();
-      });
-      // @formatter:on
-    </script>
+          animations: {
+            enabled: false
+          },
+        },
+        plotOptions: {
+          bar: {
+            columnWidth: '50%',
+          }
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        fill: {
+          opacity: 1,
+        },
+        series: [{
+          name: "A",
+          data: [44, 32, 48, 72, 60, 16, 44, 32, 78, 50, 68, 34, 26, 48, 72, 60, 84, 64, 74, 52, 62, 50, 32, 22]
+        }],
+        tooltip: {
+          theme: 'dark'
+        },
+        grid: {
+          padding: {
+            top: -20,
+            right: 0,
+            left: -4,
+            bottom: -4
+          },
+          strokeDashArray: 4,
+        },
+        xaxis: {
+          labels: {
+            padding: 0,
+          },
+          tooltip: {
+            enabled: false
+          },
+          axisBorder: {
+            show: false,
+          },
+          categories: ['Sprint 1', 'Sprint 2', 'Sprint 3', 'Sprint 4', 'Sprint 5', 'Sprint 6', 'Sprint 7', 'Sprint 8', 'Sprint 9', 'Sprint 10', 'Sprint 11', 'Sprint 12', 'Sprint 13', 'Sprint 14', 'Sprint 15', 'Sprint 16', 'Sprint 17', 'Sprint 18', 'Sprint 19', 'Sprint 20', 'Sprint 21', 'Sprint 22', 'Sprint 23', 'Sprint 24'],
+        },
+        yaxis: {
+          labels: {
+            padding: 4
+          },
+        },
+        colors: ['#21C4D1'],
+        legend: {
+          show: false,
+        },
+      })).render();
+    });
+    // @formatter:on
+  </script>
   <script>
     // @formatter:off
     document.addEventListener("DOMContentLoaded", function() {

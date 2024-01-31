@@ -156,7 +156,7 @@
             </div>
             <div class="nav-item dropdown">
               <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                <span class="avatar avatar-sm" style="background-image: url(#)"></span>
                 <div class="d-none d-xl-block ps-2">
                   <div>Paweł Kuna</div>
                   <div class="mt-1 small text-secondary">UI Designer</div>
@@ -657,7 +657,7 @@
                     <h2 class="mb-4">My Account</h2>
                     <h3 class="card-title">Profile Details</h3>
                     <div class="row align-items-center">
-                      <div class="col-auto"><span class="avatar avatar-xl" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                      <div class="col-auto"><span class="avatar avatar-xl" style="background-image: url(#)"></span>
                       </div>
                       <div class="col-auto"><a href="#" class="btn">
                           Change avatar
