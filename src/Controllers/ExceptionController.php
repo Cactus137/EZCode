@@ -2,9 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Controllers\Controller;
-
-class ExceptionController extends Controller
+class ExceptionController  
 {
 
     public function notFound()

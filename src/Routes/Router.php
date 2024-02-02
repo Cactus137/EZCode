@@ -19,21 +19,27 @@ use App\Controllers\Api\AccountControllerApi;
 use App\Controllers\ExceptionController;
 // Auth Controller
 use App\Controllers\AuthController;
+// Payment Controller
+use App\Controllers\PaymentController;
 
 $router = new RouteCollector();
 
-// Check Auth
-// $router->filter('auth', function () {
-//     if (!isset($_SESSION['user'])) {
-//         header('Location: /login');
-//         exit();
-//     }
-// });
+// Check Auth User
+$router->filter('authUser', function () {
+    if (!isset($_SESSION['user'])) {
+        header('Location: /');
+        exit();
+    }
+});
 
+// Check Auth Admin
+$router->filter('authAdmin', function () {
+    if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 1) {
+        header('Location: /');
+        exit();
+    }
+});
 
-// Grouping Route
-
-// Group Route for User
 
 // Home
 $router->get('/', function () {
@@ -71,67 +77,94 @@ $router->get('/contact', function () {
 $router->get('/blog', function () {
     $home = (new HomeControllerUser())->blog();
 });
+$router->get('/invoice/{id}', function ($id) {
+    $invoice = (new PaymentController())->showInvoce($id);
+});
+// $router->get('/checkout/{orderCode}', function ($orderCode) {
+//     $invoice = (new PaymentController())->checkout($orderCode);
+// });
+$router->get('/checkout', function () {
+    $invoice = (new PaymentController())->checkout();
+});
 
 
 // Group Route for Admin
-// $router->group(['prefix' => 'admin', 'before' => 'auth'], function ($router) {
-// Dashboad
-$router->get('/admin', function () {
-    $home = (new HomeControllerAdmin())->index();
+$router->group(['before' => 'authAdmin', 'prefix' => 'admin'], function ($router) {
+    // Dashboad
+    $router->get('', function () {
+        $home = (new HomeControllerAdmin())->index();
+    });
+    // Category Admin
+    $router->get('/category', function () {
+        $category = (new CategoryController())->index();
+    });
+    // Add Category
+    $router->post('/category/add-category', function () {
+        $category = (new CategoryController())->add();
+    });
+    // Update Category
+    $router->post('/category/update-category', function () {
+        $category = (new CategoryController())->update();
+    });
+    // Delete Category
+    $router->post('/category/delete-category', function () {
+        $category = (new CategoryController())->delete();
+    });
+    // Course Admin
+    $router->get('/course', function () {
+        $courses = (new CoursesControllerAdmin)->index();
+    });
+    // Add Course
+    $router->post('/course/add-course', function () {
+        $course = (new CoursesControllerAdmin())->add();
+    });
+    // Update Course
+    $router->post('/course/update-course', function () {
+        $course = (new CoursesControllerAdmin())->update();
+    });
+    // Delete Course
+    $router->post('/course/delete-course', function () {
+        $course = (new CoursesControllerAdmin())->delete();
+    });
+    // Account Admin
+    $router->get('/account', function () {
+        $account = (new AccountController())->index();
+    });
+    // Add Account
+    $router->post('/account/add-account', function () {
+        $account = (new AccountController())->add();
+    });
+    // Update Account
+    $router->post('/account/update-account', function () {
+        $account = (new AccountController())->update();
+    });
+    // Delete Account
+    $router->post('/account/delete-account', function () {
+        $account = (new AccountController())->delete();
+    });
+    $router->get('/invoice', function () {
+        $invoice = (new InvoiceController())->index();
+    });
 });
-// Category Admin
-$router->get('/admin/category', function () {
-    $category = (new CategoryController())->index();
+
+$router->group(['before' => 'authAdmin'], function ($router) {
+    // API Category
+    $router->get('/api/category/{id}', function ($id) {
+        $category = new CategoryControllerApi();
+        $category->show($id);
+    });
+    // API Course
+    $router->get('/api/course/{id}', function ($id) {
+        $course = new CourseControllerApi();
+        $course->show($id);
+    });
+    // API Account
+    $router->get('/api/account/{id}', function ($id) {
+        $account = new AccountControllerApi();
+        $account->show($id);
+    });
 });
-// Add Category
-$router->post('/admin/category/add-category', function () {
-    $category = (new CategoryController())->add();
-});
-// Update Category
-$router->post('/admin/category/update-category', function () {
-    $category = (new CategoryController())->update();
-});
-// Delete Category
-$router->post('/admin/category/delete-category', function () {
-    $category = (new CategoryController())->delete();
-});
-// Course Admin
-$router->get('/admin/course', function () {
-    $courses = (new CoursesControllerAdmin)->index();
-});
-// Add Course
-$router->post('/admin/course/add-course', function () {
-    $course = (new CoursesControllerAdmin())->add();
-});
-// Update Course
-$router->post('/admin/course/update-course', function () {
-    $course = (new CoursesControllerAdmin())->update();
-});
-// Delete Course
-$router->post('/admin/course/delete-course', function () {
-    $course = (new CoursesControllerAdmin())->delete();
-});
-// Account Admin
-$router->get('/admin/account', function () {
-    $account = (new AccountController())->index();
-});
-// Add Account
-$router->post('/admin/account/add-account', function () {
-    $account = (new AccountController())->add();
-});
-// Update Account
-$router->post('/admin/account/update-account', function () {
-    $account = (new AccountController())->update();
-});
-// Delete Account
-$router->post('/admin/account/delete-account', function () {
-    $account = (new AccountController())->delete();
-});
-$router->get('/admin/invoice', function () {
-    $invoice = (new InvoiceController())->index();
-    $invoice;
-});
-// }); 
+
 
 // Exception
 $router->get('/404', function () {
@@ -139,9 +172,8 @@ $router->get('/404', function () {
 });
 $router->get('/405', function () {
     $exception = (new ExceptionController())->notAllowed();
-}); 
+});
 
-// Auth
 // Login
 $router->post('/login', function () {
     $auth = (new AuthController())->login();
@@ -153,23 +185,9 @@ $router->post('/register', function () {
 // Logout
 $router->get('/logout', function () {
     $auth = (new AuthController())->logout();
-}); 
+});
 
-// API Category
-$router->get('/api/category/{id}', function ($id) {
-    $category = new CategoryControllerApi();
-    $category->show($id);
-});
-// API Course
-$router->get('/api/course/{id}', function ($id) {
-    $course = new CourseControllerApi();
-    $course->show($id);
-});
-// API Account
-$router->get('/api/account/{id}', function ($id) {
-    $account = new AccountControllerApi();
-    $account->show($id);
-});
+
 
 $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());
 

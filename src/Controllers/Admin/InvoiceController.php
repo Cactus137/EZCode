@@ -2,11 +2,10 @@
 
 namespace App\Controllers\Admin;
 
-use App\Controllers\Controller;
+use App\Controllers\BaseController;
 use App\Models\Invoice;
-use App\Models\PageLayout;
 
-class InvoiceController extends Controller
+class InvoiceController extends BaseController
 {
     public function index()
     {
@@ -14,10 +13,7 @@ class InvoiceController extends Controller
             'title' => 'Invoice',
         ];
 
-        view('admin', [
-            'content' => PageLayout::admin('invoice'),
-            'data' => $data,
-        ]);
+        $this->render('admin.invoice', compact('data'));
     } 
 }
 

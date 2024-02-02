@@ -2,46 +2,25 @@
 
 namespace App\Controllers;
 
-use App\Models\PageLayout;
+use App\Controllers\BaseController;
 use App\Models\Payment;
-use App\Controllers\Controller;
 
-class PaymentController extends Controller
+class PaymentController extends BaseController
 {
-    public function checkout($orderCode)
+    // public function checkout($orderCode)
+    // {
+    //     $payment = (new Payment)->find(['order_code' => $orderCode]);
+    //     $this->render('shared.checkout', compact('payment'));
+    // }
+
+    public function checkout()
     {
-        // $payment = new Payment();
-        // $payments = $payment->find([
-        //     'order_code' => $orderCode
-        // ]);
-
-        // $data = [
-        //     'title' => 'Checkout',
-        //     'payments' => $payments
-        // ];
-
-        view('shared', [
-            'content' => PageLayout::shared('payment'),
-            // 'data' => $data
-        ]);
+        $this->render('shared.checkout');
     }
 
     public function showInvoce($transactionId)
     {
-        // $payment = new Payment();
-        // $payments = $payment->find([
-        //     'order_code' => $orderCode
-        // ]);
 
-        // $data = [
-        //     'title' => 'Invoice',
-        //     'payments' => $payments
-        // ];
-
-        view('shared', [
-            'content' => PageLayout::shared('invoice'),
-            // 'data' => $data
-            'data' => $transactionId
-        ]);
+        $this->render('shared.invoice', compact('transactionId'));
     }
 }

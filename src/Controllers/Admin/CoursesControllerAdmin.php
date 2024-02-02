@@ -2,12 +2,11 @@
 
 namespace App\Controllers\Admin;
 
-use App\Controllers\Controller;
+use App\Controllers\BaseController;
 use App\Models\Course;
 use App\Models\Category;
-use App\Models\PageLayout;
 
-class CoursesControllerAdmin extends Controller
+class CoursesControllerAdmin extends BaseController
 {
     // Show Course 
     public function index()
@@ -19,10 +18,8 @@ class CoursesControllerAdmin extends Controller
             'courses' => $courses,
             'categories' => $category,
         ];
-        view('admin', [
-            'content' => PageLayout::admin('courses'),
-            'data' => $data,
-        ]);
+
+        $this->render('admin.courses', compact('data'));
     }
 
     // Add Course

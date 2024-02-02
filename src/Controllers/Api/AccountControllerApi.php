@@ -2,10 +2,10 @@
 
 namespace App\Controllers\Api;
 
-use App\Controllers\Controller;
+use App\Controllers\BaseController;
 use App\Models\Account;
 
-class AccountControllerApi extends Controller
+class AccountControllerApi extends BaseController
 {
     public function show($id)
     {

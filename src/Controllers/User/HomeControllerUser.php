@@ -2,12 +2,11 @@
 
 namespace App\Controllers\User;
 
-use App\Controllers\Controller;
+use App\Controllers\BaseController;
 use App\Models\Course;
 use App\Models\Category;
-use App\Models\PageLayout;
 
-class HomeControllerUser extends Controller
+class HomeControllerUser extends BaseController
 {
     public function index()
     {
@@ -25,10 +24,7 @@ class HomeControllerUser extends Controller
             'categories' => $categories,
         ];
 
-        view('user', [
-            'content' => PageLayout::user('home'),
-            'data' => $data
-        ]);
+        $this->render('user.home', compact('data'));
     }
 
     public function about()
@@ -37,10 +33,7 @@ class HomeControllerUser extends Controller
             'title' => 'About',
         ];
 
-        view('user', [
-            'content' => PageLayout::user('about'),
-            'data' => $data
-        ]);
+        $this->render('user.about', compact('data'));
     }
 
     public function contact()
@@ -49,10 +42,7 @@ class HomeControllerUser extends Controller
             'title' => 'Contact',
         ];
 
-        view('user', [
-            'content' => PageLayout::user('contact'),
-            'data' => $data
-        ]);
+        $this->render('user.contact', compact('data'));
     }
 
     public function blog()
@@ -61,9 +51,6 @@ class HomeControllerUser extends Controller
             'title' => 'Blog',
         ];
 
-        view('user', [
-            'content' => PageLayout::user('blog'),
-            'data' => $data
-        ]);
-    } 
+        $this->render('user.blog', compact('data'));
+    }
 }

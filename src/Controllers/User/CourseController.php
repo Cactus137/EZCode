@@ -2,16 +2,15 @@
 
 namespace App\Controllers\User;
 
-use App\Controllers\Controller;
+use App\Controllers\BaseController;
 use App\Models\Course;
 use App\Models\Comment;
 use App\Models\Account;
 use App\Models\Invoice;
 use App\Models\Lesson;
 use App\Models\Category;
-use App\Models\PageLayout;
 
-class CourseController extends Controller
+class CourseController extends BaseController
 {
     public function index()
     {
@@ -26,7 +25,7 @@ class CourseController extends Controller
             $courses[$key]['number_of_participants'] = count($number_of_participants);
             $cat = new Category();
             $category = $cat->find(['id' => $value['id_category']]);
-            $categories = array_merge($categories, $category);           
+            $categories = array_merge($categories, $category);
         }
 
         $data = [
@@ -35,10 +34,23 @@ class CourseController extends Controller
             'categories' => $categories,
         ];
 
-        view('user', [
-            'content' => PageLayout::user('course'),
-            'data' => $data
+        $this->render('user.course', compact('data'));
+    }
+
+    public function category($id)
+    {
+        $course = new Course();
+        $courses = $course->find([
+            'id_category' => $id,
+            'status' => 0
         ]);
+
+        $data = [
+            'title' => 'Category',
+            'courses' => $courses
+        ];
+
+        $this->render('user.category', compact('data'));
     }
 
     public function show($id)
@@ -56,7 +68,7 @@ class CourseController extends Controller
             'status' => 0,
             'id !' => $id,
         ]);
-        
+
         // Add number of participants to course
         $comments = $comment->find(['id_course' => $id, 'status' => 0]);
         $courses[0]['number_of_participants'] = count($comments);
@@ -76,10 +88,29 @@ class CourseController extends Controller
             'related_courses' => $related_courses,
         ];
 
-        view('user', [
-            'content' => PageLayout::user('detailCourse'),
-            'data' => $data
-        ]);
+        $this->render('user.detailCourse', compact('data'));
+    }
+
+    public function myCourse()
+    {
+        $invoice = new Invoice();
+        $invoices = $invoice->all();
+
+        $myCourses = [];
+        foreach ($invoices as $key => $value) {
+            $course = new Course();
+            $courses = $course->find([
+                'id' => $value['id_course']
+            ]);
+            $myCourses = array_merge($myCourses, $courses);
+        }
+
+        $data = [
+            'title' => 'My Course',
+            'courses' => $myCourses
+        ];
+
+        $this->render('user.myCourses', compact('data'));
     }
 
     public function learn($id, $lessonId)
@@ -88,7 +119,7 @@ class CourseController extends Controller
         $lesson = new Lesson();
         $courses = $course->find([
             'id' => $id,
-        ]);        
+        ]);
         $current_lesson = $lesson->find([
             'id_course' => $id,
             'num_lesson' => $lessonId
@@ -103,53 +134,6 @@ class CourseController extends Controller
             'lessons' => $lessons,
         ];
 
-        view('user', [
-            'content' => PageLayout::user('learn'),
-            'data' => $data
-        ]);
-    }
-
-    public function myCourse()
-    {
-        $invoice = new Invoice();
-        $invoices = $invoice->all();
-        
-        $myCourses = [];
-        foreach ($invoices as $key => $value) {
-            $course = new Course();
-            $courses = $course->find([
-                'id' => $value['id_course']
-            ]);
-            $myCourses = array_merge($myCourses, $courses);
-        }
-
-
-        $data = [
-            'title' => 'My Course',
-            'courses' => $myCourses
-        ];
-
-        view('user', [
-            'content' => PageLayout::user('myCourses'),
-            'data' => $data
-        ]);
-    }
-
-    public function category($id) {
-        $course = new Course();
-        $courses = $course->find([
-            'id_category' => $id,
-            'status' => 0
-        ]);
-
-        $data = [
-            'title' => 'Category',
-            'courses' => $courses
-        ];
-
-        view('user', [
-            'content' => PageLayout::user('course'),
-            'data' => $data
-        ]);
+        $this->render('user.learn', compact('data'));
     }
 }

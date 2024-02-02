@@ -2,11 +2,10 @@
 
 namespace App\Controllers\Admin;
 
-use App\Controllers\Controller;
+use App\Controllers\BaseController;
 use App\Models\Category;
-use App\Models\PageLayout;
 
-class CategoryController extends Controller
+class CategoryController extends BaseController
 {
     // Show Category
     public function index()
@@ -16,10 +15,8 @@ class CategoryController extends Controller
             'title' => 'Category',
             'categories' => $categories,
         ];
-        view('admin', [
-            'content' => PageLayout::admin('categories'),
-            'data' => $data,
-        ]);
+
+        $this->render('admin.categories', compact('data')); 
     }
 
     // Add Category

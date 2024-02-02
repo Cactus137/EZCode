@@ -2,11 +2,10 @@
 
 namespace App\Controllers\Admin;
 
-use App\Controllers\Controller;
-use App\Models\PageLayout;
+use App\Controllers\BaseController;
 use App\Models\Account;
 
-class AccountController extends Controller
+class AccountController extends BaseController
 {
     public function index()
     {
@@ -17,10 +16,7 @@ class AccountController extends Controller
             'accounts' => $accounts,
         ];
 
-        view('admin', [
-            'content' => PageLayout::admin('accounts'),
-            'data' => $data
-        ]);
+        $this->render('admin.accounts', compact('data'));
     }
 
     public function add()

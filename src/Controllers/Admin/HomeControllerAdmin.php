@@ -2,10 +2,8 @@
 
 namespace App\Controllers\Admin;
 
-use App\Controllers\Controller;
-use App\Models\PageLayout;
-
-class HomeControllerAdmin extends Controller
+use App\Controllers\BaseController;
+class HomeControllerAdmin extends BaseController
 {
     public function index()
     {
@@ -14,9 +12,6 @@ class HomeControllerAdmin extends Controller
             'title' => "Dashboard",
         ];
 
-        view('admin', [
-            'content' => PageLayout::admin('home'),
-            'data' => $data,
-        ]);
+        $this->render('admin.home', compact('data'));
     }
 }

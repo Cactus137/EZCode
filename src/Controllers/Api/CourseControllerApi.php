@@ -2,20 +2,13 @@
 
 namespace App\Controllers\Api;
 
-use App\Controllers\Controller;
+use App\Controllers\BaseController;
 use App\Models\Course;
 use App\Models\Category;
 use App\Models\Comment;
 
-class CourseControllerApi extends Controller
-{
-    // public function index()
-    // {
-    //     $course = new Course;
-    //     $courses = $course->all();
-    //     return $this->json($courses, 200);
-    // }
-
+class CourseControllerApi extends BaseController
+{ 
     public function show($id)
     {
         $course = (new Course)->find(['id' => $id]);
