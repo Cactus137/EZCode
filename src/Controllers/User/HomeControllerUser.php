@@ -13,7 +13,14 @@ class HomeControllerUser extends BaseController
         $course = new Course;
         $category = new Category;
 
-        $courses = $course->all();
+        // populate the courses and categories
+        $id_courses = $course->popularCourses();
+        foreach ($id_courses as $key => $value) {
+            $courses[] = $course->find([
+                'id' => $value['id_course']
+            ]);
+        }
+        $courses = array_merge(...$courses);
         $categories = $category->find([
             'status' => 0
         ]);

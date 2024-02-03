@@ -171,7 +171,9 @@
                     <!-- Tab content -->
                     <div class="tab-content">
                         <div class="tab-pane active">
-                            {{ $description }}
+                            @php
+                                echo $description;
+                            @endphp
                         </div>
                         <div class="tab-pane ">
                             @foreach ($data['comments'] as $comment)

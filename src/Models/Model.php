@@ -17,7 +17,7 @@ class Model
 
     public function all()
     {
-        $sql = "SELECT * FROM $this->table ORDER BY id DESC" ;
+        $sql = "SELECT * FROM $this->table ORDER BY id DESC";
         return $this->connection->query($sql);
     }
 
@@ -29,7 +29,7 @@ class Model
             $sql .= "$key= $value AND ";
         }
 
-        $sql = substr($sql, 0, -4); 
+        $sql = substr($sql, 0, -4);
 
         return $this->connection->query($sql);
     }
@@ -98,5 +98,23 @@ class Model
         }
 
         return $errors;
-    } 
+    }
+
+    public function popularCourses()
+    {
+        $sql = "SELECT
+        id_course,
+        COUNT(*) AS popular_course
+    FROM
+        invoices
+    LEFT JOIN courses ON invoices.id_course = courses.id
+        WHERE status = 0
+    GROUP BY
+        id_course
+    ORDER BY
+        popular_course
+    DESC
+    LIMIT 6;";
+        return $this->connection->query($sql);
+    }
 }

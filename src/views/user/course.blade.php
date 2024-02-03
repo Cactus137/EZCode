@@ -88,7 +88,7 @@
                             </a>
                             <div class="card-body">
                                 <div class="course_header d-flex flex-row align-items-center justify-content-start">
-                                    <a href="payment.php" class="btn btn-primary me-3">Join now</a>
+                                    <a href="/checkout/{{ $id }}" class="btn btn-primary me-3">Join now</a>
                                     <div class="course_price ml-auto fs-5">Price: <span
                                             class="price_after me-2 text-success fs-6">${{ number_format($price) }}</span>
                                     </div>

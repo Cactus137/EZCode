@@ -39,8 +39,14 @@
         body {
             background-color: #272A31;
             color: #DAE4F0;
-        } 
+        }
     </style>
+
+    @php
+        $orderCode = $data['orderCode'];
+        $course = $data['course'][0];
+        // var_dump($course);
+    @endphp
 
     <div class="container">
         <div class="row pt-5">
@@ -58,14 +64,17 @@
                         </div>
                     </div>
                     <div class="row border-bottom mb-3">
-                        <p>Course name: <span class="text-primary">PHP</span></p>
-                        <p>Code orders: <span class="text-primary">JHFD56FDK</span></p>
+                        <p class="m-0 p-0">Course name: </p>
+                        <p class="mx-0 p-0 fs-5">{{ $course['name'] }}</p>
+                        <p class="m-0 p-0">Code orders: </p>
+                        <p class="mx-0 p-0 fs-5 text-primary">{{ $orderCode }}</p>
                     </div>
                     <div class="row border-bottom mb-3">
-                        <h4 class="mb-4">Payment details:</h4>
+                        <h4 class="ps-0 mb-4">Payment details:</h4>
                         <div class="row mb-3 mx-0 px-0 ">
-                            <p>Price: <span class="text-primary">$35</span></p>
-                            <p class="fs-5">Total amount: <span class="text-primary fs-4">$35</span></p>
+                            <p class="px-0">Price: <span class="text-primary">${{ $course['price'] }}</span></p>
+                            <p class="px-0 fs-5">Total amount: <span class="text-primary fs-4">${{ $course['price'] }}</span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -82,7 +91,7 @@
                         </div>
                         <div class="col">
                             <p>Step 1: Open the banking app and scan the QR code.</p>
-                            <p>Make sure the transfer content is <span class="text-primary">F8C1BK2N</span>.</p>
+                            <p>Make sure the transfer content is <span class="text-primary">{{ $orderCode }}</span>.</p>
                             <p>Step 3: Make payment.</p>
                         </div>
                     </div>
@@ -92,7 +101,7 @@
                     <div class="row">
                         <div class="col">
                             <p>Account number: <span class="text-primary">246785457445</span></p>
-                            <p>Content: <span class="text-primary">F8C1BK2N</span></p>
+                            <p>Content: <span class="text-primary">{{ $orderCode }}</span></p>
                         </div>
                         <div class="col">
                             <p>Account name: <span class="text-primary">Le Van Thanh</span></p>

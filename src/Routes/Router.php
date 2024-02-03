@@ -80,13 +80,13 @@ $router->get('/blog', function () {
 $router->get('/invoice/{id}', function ($id) {
     $invoice = (new PaymentController())->showInvoce($id);
 });
-// $router->get('/checkout/{orderCode}', function ($orderCode) {
-//     $invoice = (new PaymentController())->checkout($orderCode);
-// });
-$router->get('/checkout', function () {
-    $invoice = (new PaymentController())->checkout();
+$router->get('/checkout/{id_course}', function ($id_course) {
+    $invoice = (new PaymentController())->checkout($id_course);
 });
-
+// checkout handle
+$router->post('/checkout/handle', function () {
+    $invoice = (new PaymentController())->checkoutHandle();
+}); 
 
 // Group Route for Admin
 $router->group(['before' => 'authAdmin', 'prefix' => 'admin'], function ($router) {

@@ -26,4 +26,5 @@ class Course extends Model
     {
         parent::__construct();
     }
+    
 }

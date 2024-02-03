@@ -1,5 +1,15 @@
 @extends('layouts.user')
 @section('content')
+    <style>
+        .course_text {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            /* number of lines to show */
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+    </style>
     <!-- Carousel Start -->
     <div class="container-fluid p-0 mb-5">
         <div class="owl-carousel header-carousel position-relative">
@@ -177,8 +187,11 @@
                 <h1 class="mb-5">Popular Courses</h1>
             </div>
             <div class="row row-cols-1 row-cols-md-3 g-4">
-                @for ($i = 0; $i < 6; $i++)
-                    {{-- <div class="col">
+                @foreach ($data['courses'] as $course)
+                    @php
+                        extract($course);
+                    @endphp
+                    <div class="col">
                         <div class="card h-100">
                             <a href="/course/{{ $id }}" class="text-decoration-none">
                                 <img src="{{ asset('img/courses/' . $thumbnail) }}" class="card-img-top"
@@ -186,7 +199,7 @@
                             </a>
                             <div class="card-body">
                                 <div class="course_header d-flex flex-row align-items-center justify-content-start">
-                                    <a href="payment.php" class="btn btn-primary me-3">Join now</a>
+                                    <a href="/checkout/{{ $id }}" class="btn btn-primary me-3">Join now</a>
                                     <div class="course_price ml-auto fs-5">Price: <span
                                             class="price_after me-2 text-success fs-6">${{ number_format($price) }}</span>
                                     </div>
@@ -215,8 +228,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
-                @endfor
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
