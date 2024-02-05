@@ -1,154 +1,108 @@
 @extends('layouts.shared')
 @section('content')
     <style>
-        h4,
-        h2 {
-            color: #DAE4F0;
-        }
-
-        .simple-spinner {
-            width: 25px;
-            height: 25px;
-        }
-
-        .simple-spinner span {
-            margin-top: 2px;
-            display: block;
-            width: 25px;
-            height: 25px;
-            border: 3px solid transparent;
-            border-radius: 50%;
-            border-right-color: rgba(255, 255, 255, 0.7);
-            animation: spinner-anim 1s linear infinite;
-        }
-
-        @keyframes spinner-anim {
-            from {
-                transform: rotate(0);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .line {
-            border-bottom: 1px solix white;
-        }
-
         body {
-            background-color: #272A31;
-            color: #DAE4F0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 0;
+            background: url('{{ asset('img/shared/bg-checkout.png') }}') no-repeat center center fixed;
+            background-size: cover;
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .container-xxl {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
         }
     </style>
-
     @php
         $orderCode = $data['orderCode'];
         $course = $data['course'][0];
-        // var_dump($course);
     @endphp
-
-    <div class="container">
-        <div class="row pt-5">
-            <div class="col-md-3 ps-5">
-                <div class="col-left ">
-                    <div class="row border-bottom mb-3">
+    <div class="container-xxl p-5 mt-5 position-relative">
+        <div class="log position-absolute">
+            <a href="/"><img class="pt-4 ps-4" src="{{ asset('img/shared/logo-2.png') }}" width="30%"></a>
+        </div>
+        <div class="contain d-flex justify-content-center">
+            <div class="col-6 background-payment">
+                <img src="{{ asset('img/shared/checkout.jpg') }}" alt="">
+            </div>
+            <div class="col background-payment m-5 d-flex align-items-center">
+                <div class="mb-5">
+                    <div class="mb-3">
                         <div class="loading d-flex">
-                            <h4 class="me-2">Awaiting payment</h4>
-                            <div class="simple-spinner">
-                                <span></span>
-                            </div>
-                        </div>
-                        <div class="row countdown-time my-2 text-center">
-                            <h3 id="countdown">05:00</span>
+                            <h4 class="me-2">Order Summary</h4>
                         </div>
                     </div>
-                    <div class="row border-bottom mb-3">
-                        <p class="m-0 p-0">Course name: </p>
-                        <p class="mx-0 p-0 fs-5">{{ $course['name'] }}</p>
-                        <p class="m-0 p-0">Code orders: </p>
-                        <p class="mx-0 p-0 fs-5 text-primary">{{ $orderCode }}</p>
-                    </div>
-                    <div class="row border-bottom mb-3">
-                        <h4 class="ps-0 mb-4">Payment details:</h4>
-                        <div class="row mb-3 mx-0 px-0 ">
-                            <p class="px-0">Price: <span class="text-primary">${{ $course['price'] }}</span></p>
-                            <p class="px-0 fs-5">Total amount: <span class="text-primary fs-4">${{ $course['price'] }}</span>
-                            </p>
+                    <div class="border-bottom mb-3">
+                        <div class="row mb-3">
+                            <div class="col-5 text-start">Course name: </div>
+                            <div class="col text-end">{{ $course['name'] }}</div>
+                        </div>
+                        <div class="row pb-2">
+                            <div class="col-5 text-start">Code orders: </div>
+                            <div class="col text-end">{{ $orderCode }}</div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="border-end p-0 mx-4" style="width: 1px;">
-
-            </div>
-            <div class="col-md-7">
-                <div class="row mb-5">
-                    <h2>Transfer money by QR</h2>
-                    <div class="row mt-2">
-                        <div class="col-3 me-2">
-                            <img class="rounded" src="<?= asset('img/shared/qr.png') ?>" width="150px">
+                    <div class="">
+                        <div class="row py-1">
+                            <div class="col-5 text-start">Price: </div>
+                            <div class="col text-end fw-bold">${{ $course['price'] }}</div>
                         </div>
-                        <div class="col">
-                            <p>Step 1: Open the banking app and scan the QR code.</p>
-                            <p>Make sure the transfer content is <span class="text-primary">{{ $orderCode }}</span>.</p>
-                            <p>Step 3: Make payment.</p>
+                        <div class="row py-1">
+                            <div class="col-5 text-start">VAT: </div>
+                            <div class="col text-end fw-bold">$0</div>
+                        </div>
+                        <div class="row py-1">
+                            <div class="col-5 text-start fs-5">Total amount: </div>
+                            <div class="col text-end fw-bold fs-5">${{ $course['price'] }}</div>
                         </div>
                     </div>
-                </div>
-                <div class="row mb-5">
-                    <h2>Manual transfer</h2>
-                    <div class="row">
-                        <div class="col">
-                            <p>Account number: <span class="text-primary">246785457445</span></p>
-                            <p>Content: <span class="text-primary">{{ $orderCode }}</span></p>
-                        </div>
-                        <div class="col">
-                            <p>Account name: <span class="text-primary">Le Van Thanh</span></p>
-                            <p>Branch: <span class="text-primary">Vietcombank Hanoi</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <h2>Note</h2>
-                    <div class="row">
-                        <div class="col">
-                            <p>Maximum 5 minutes after the transfer time, if the system does not respond, please contact
-                                F8 support immediately.</p>
-                            <p><i class="fa-solid fa-phone pe-1"></i>Phone number: 0246.329.1102</p>
-                            <p><i class="fa-solid fa-envelope pe-1"></i>Email: blackwhilee04@gmail.com</p>
-                            <p><i class="fa-solid fa-location-dot pe-1"></i>Address: Ngo 14 Me Tri Ha, Tu Liem, Ha Noi
-                            </p>
-                        </div>
-                    </div>
+                    <div id="paypal-button-container" class=" mt-3"></div>
                 </div>
             </div>
         </div>
+        <form action="/checkout/handle/{{ $orderCode }}" method="post" id="inf-invoice">
+            <input type="hidden" name="id_account" value="{{ $_SESSION['user']['id'] }}">
+            <input type="hidden" name="email" value="{{ $_SESSION['user']['email'] }}">
+            <input type="hidden" name="id_course" value="{{ $course['id'] }}">
+            <input type="hidden" name="total_price" value="{{ $course['price'] }}">
+        </form>
     </div>
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=ASOFGw9z0HiVokWcHkFMTE5iJNqeyzcznSntNEBRvzoBJMfTp7k0OFXOM7blBN0L4MK31Gn_wGQfEFsm&currency=USD">
+    </script>
     <script>
-        function startTimer(duration, display) {
-            var timer = duration,
-                minutes, seconds;
-            setInterval(function() {
-                minutes = parseInt(timer / 60, 10);
-                seconds = parseInt(timer % 60, 10);
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+            style: {
+                tagline: 'false',
+                layout: 'horizontal'
+            },
+            // Set up the transaction
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '{{ $course['price'] }}'
+                        }
+                    }]
+                });
+            },
 
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-
-                display.textContent = minutes + ":" + seconds;
-
-                if (--timer < 0) {
-                    // Go back to the previous page
-                    window.history.back();
-                }
-            }, 1000);
-        }
-
-        window.onload = function() {
-            var fiveMinutes = (60 * 5) - 1,
-                display = document.querySelector('#countdown');
-            startTimer(fiveMinutes, display);
-        };
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    // Get data from the form and send it to the server
+                    var form = document.getElementById('inf-invoice');
+                    if (details.status === 'COMPLETED') {
+                        form.submit();
+                    }
+                });
+            }
+        }).render('#paypal-button-container');
     </script>
 @endsection

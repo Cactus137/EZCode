@@ -1,5 +1,8 @@
 @extends('layouts.shared')
 @section('content')
+    @php
+        $dataInvoice = $dataInvoice[0];
+    @endphp
     <div class="page-wrapper">
         <!-- Page header -->
         <div class="page-header d-print-none">
@@ -34,26 +37,37 @@
                 <div class="card card-lg">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-6">
-                                <p class="h3">EZCode</p>
+                            <div class="col-4">
+                                <p class="h5">Invoice from EZCode</p>
+                                <hr class="w-50">
                                 <address>
-                                    34 Trịnh Văn bô<br>
-                                    Nam Từ Liêm, Hà Nội<br>
-                                    Việt Nam<br>
-                                    cactusezcode@gmail.com
+                                    Contact Person: <br>
+                                    Phone: (+84) 382606012<br>
+                                    Email: Blackwhilee04@gmail.com<br>
                                 </address>
                             </div>
-                            <div class="col-6 text-end">
-                                <p class="h3">Le Van Thanh</p>
-                                <address>
-                                    14 Me Tri Ha<br>
-                                    Nam Tu Liem, Ha Noi<br>
-                                    Viet Nam<br>
-                                    blackwhilee04@gmail.com
-                                </address>
+                            <div class="col-4">
                             </div>
-                            <div class="col-12 my-5">
-                                <h1>Invoice No. INV/001/15</h1>
+                            <div class="col-4 text-end">
+                                <br><br>
+                                <div class="row">
+                                    <div class="col-4 text-start">Invoice No</div>
+                                    <div class="col d-flex justify-content-between">:
+                                        <div class="col">{{ $dataInvoice['code_invoice'] }}</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4 text-start">Invoice Date</div>
+                                    <div class="col d-flex justify-content-between">:
+                                        <div class="col">{{ $dataInvoice['issue_date'] }}</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4 text-start">Email Client</div>
+                                    <div class="col d-flex justify-content-between">:
+                                        <div class="col">{{ $dataInvoice['email'] }}</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <table class="table table-transparent table-responsive">
@@ -69,18 +83,17 @@
                             <tr>
                                 <td class="text-center">1</td>
                                 <td>
-                                    <p class="strong mb-1">Logo Creation</p>
-                                    <div class="text-secondary">Logo and business cards design</div>
+                                    <p class="strong mb-1">{{ $dataInvoice['name_course'] }}</p>
                                 </td>
                                 <td class="text-center">
                                     1
                                 </td>
-                                <td class="text-end">$1.800,00</td>
-                                <td class="text-end">$1.800,00</td>
+                                <td class="text-end">${{ number_format($dataInvoice['total_price']) }}</td>
+                                <td class="text-end">${{ number_format($dataInvoice['total_price']) }}</td>
                             </tr>
                             <tr>
                                 <td colspan="4" class="strong text-end">Total</td>
-                                <td class="text-end">$25.000,00</td>
+                                <td class="text-end">${{ number_format($dataInvoice['total_price']) }}</td>
                             </tr>
                             <tr>
                                 <td colspan="4" class="strong text-end">Payments</td>
@@ -88,7 +101,7 @@
                             </tr>
                             <tr>
                                 <td colspan="4" class="strong text-end">Trading code</td>
-                                <td class="text-end">INV/001/15</td>
+                                <td class="text-end">{{ $dataInvoice['code_invoice'] }}</td>
                             </tr>
                             <tr>
                                 <td colspan="4" class="strong text-end">VAT</td>
@@ -96,7 +109,8 @@
                             </tr>
                             <tr>
                                 <td colspan="4" class="font-weight-bold text-uppercase text-end">TOTAL PAYMENT</td>
-                                <td class="font-weight-bold text-end">$25.000,00</td>
+                                <td class="font-weight-bold text-end">${{ number_format($dataInvoice['total_price']) }}
+                                </td>
                             </tr>
                         </table>
                         <div class="card-foot row" style="height: 200px;">

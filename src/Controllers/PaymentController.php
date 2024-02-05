@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-// use App\Models\Payment;
 use App\Models\Course;
 use App\Models\Invoice;
 
@@ -26,7 +25,7 @@ class PaymentController extends BaseController
                 if ($inv['code_invoice'] == $orderCode) {
                     $existingInvoice = $inv;
                 }
-            } 
+            }
         } while (!empty($existingInvoice));
 
         $data = [
@@ -38,23 +37,34 @@ class PaymentController extends BaseController
     }
 
 
-    public function checkoutHandle()
+    public function checkoutHandle($orderCode)
     {
-        // $data = [
-        //     'order_code' => $_POST['order_code'],
-        //     'transaction_id' => $_POST['transaction_id'],
-        //     'status' => 1
-        // ];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $invoice = new Invoice();
+            $dataAddInvoice = [
+                'code_invoice' => $orderCode,
+                'id_account' => $_POST['id_account'],
+                'email' => $_POST['email'],
+                'id_course' => $_POST['id_course'],
+                'issue_date' => date('Y-m-d H:i:s'),
+                'total_price' => $_POST['total_price'],
+            ]; 
 
-        // $payment = new Payment();
-        // $payment->update($data, $_POST['id']);
-
-        // header('Location: /my-course');
+            $invoice->create($dataAddInvoice);
+            header('Location: /invoice/' . $orderCode);
+        }
     }
 
-    public function showInvoce($transactionId)
+    public function showInvoce($orderCode)
     {
-
-        $this->render('shared.invoice', compact('transactionId'));
+        $invoice = new Invoice();
+        $dataInvoice = $invoice->find(['code_invoice' => "'" . $orderCode . "'"]);
+        $dataCourse = (new Course())->find(['id' => $dataInvoice[0]['id_course']]);
+        $dataInvoice[0]['name_course'] = $dataCourse[0]['name'];
+        if (empty($dataInvoice)) {
+            header('Location: /404');
+            exit();
+        }
+        $this->render('shared.invoice', compact('dataInvoice'));
     }
 }

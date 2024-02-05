@@ -138,7 +138,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <a href="/payment/{{ $id }}"
+                                    <a href="/checkout/{{ $id }}"
                                         class="btn btn-primary m-0 py-2 btn-lg rounded-pill">Join
                                         now</a>
                                 </div>

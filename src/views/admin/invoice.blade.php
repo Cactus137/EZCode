@@ -37,7 +37,7 @@
                                             </td>
                                             <td>$887</td>
                                             <td>
-                                                <a href="/invoice/1" class="btn btn-outline-secondary w-100">
+                                                <a href="#" class="btn btn-outline-secondary w-100">
                                                     Detail Invoice
                                                 </a>
                                             </td>

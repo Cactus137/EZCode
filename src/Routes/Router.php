@@ -40,7 +40,6 @@ $router->filter('authAdmin', function () {
     }
 });
 
-
 // Home
 $router->get('/', function () {
     $home = (new HomeControllerUser())->index();
@@ -53,17 +52,9 @@ $router->get('/course', function () {
 $router->get("/course/{id}", function ($id) {
     $course = (new CourseController())->show($id);
 });
-// My course
-$router->get('/my-course', function () {
-    $course = (new CourseController())->myCourse();
-});
 // Course by Category
 $router->get('/course/category/{id}', function ($id) {
     $course = (new CourseController())->category($id);
-});
-// Learn Course
-$router->get('/course/{id}/learn/lesson-{lessonId}', function ($id, $lessonId) {
-    $course = (new CourseController())->learn($id, $lessonId);
 });
 // About
 $router->get('/about', function () {
@@ -77,16 +68,29 @@ $router->get('/contact', function () {
 $router->get('/blog', function () {
     $home = (new HomeControllerUser())->blog();
 });
-$router->get('/invoice/{id}', function ($id) {
-    $invoice = (new PaymentController())->showInvoce($id);
+
+$router->group(['before' => 'authUser'], function ($router) {
+    // My course
+    $router->get('/my-course', function () {
+        $course = (new CourseController())->myCourse();
+    });
+    // Learn Course
+    $router->get('/course/{id}/learn/lesson-{lessonId}', function ($id, $lessonId) {
+        $course = (new CourseController())->learn($id, $lessonId);
+    });
+    // Invoice detail
+    $router->get('/invoice/{orderCode}', function ($orderCode) {
+        $invoice = (new PaymentController())->showInvoce($orderCode);
+    });
+    // checkout
+    $router->get('/checkout/{id_course}', function ($id_course) {
+        $invoice = (new PaymentController())->checkout($id_course);
+    });
+    // checkout handle
+    $router->post('/checkout/handle/{orderCode}', function ($orderCode) {
+        $invoice = (new PaymentController())->checkoutHandle($orderCode);
+    });
 });
-$router->get('/checkout/{id_course}', function ($id_course) {
-    $invoice = (new PaymentController())->checkout($id_course);
-});
-// checkout handle
-$router->post('/checkout/handle', function () {
-    $invoice = (new PaymentController())->checkoutHandle();
-}); 
 
 // Group Route for Admin
 $router->group(['before' => 'authAdmin', 'prefix' => 'admin'], function ($router) {
@@ -165,7 +169,10 @@ $router->group(['before' => 'authAdmin'], function ($router) {
     });
 });
 
-
+// Handle 404 for all other routes
+$router->any('/', function () {
+    $exception = (new ExceptionController())->notFound();
+}); 
 // Exception
 $router->get('/404', function () {
     $exception = (new ExceptionController())->notFound();
